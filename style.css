@@ -1,0 +1,293 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 200vh;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+#content-wrap {
+  padding-bottom: 3.5rem;
+}
+
+.main-header {
+  min-height: 12.5vh;
+}
+
+.main-header,
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  background-color: #991a1a;
+}
+
+.main-footer {
+  font-family: "Poppins", sans-serif;
+  background-color: darkred;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.footer-nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: auto;
+  padding: 0;
+  margin-right: ;
+  margin-top: 0.75rem;
+  width: 15%;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.social-link img {
+  width: 1.25em;
+  margin-right: 1.25em;
+}
+
+.logo-and-name,
+.arrow-left {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  position: relative;
+}
+
+.arrow-left {
+  margin-left: 1.5rem;
+}
+
+.logo {
+  margin-left: 1.5rem;
+  padding: 0;
+  position: relative;
+  bottom: 0.25rem;
+}
+
+.page-name,
+.page-name-ian,
+.load-name {
+  align-items: center;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 15px;
+  font-weight: bolder;
+  margin-left: 0.75rem;
+  cursor: pointer;
+}
+
+.page-name-ian {
+  letter-spacing: 10px;
+}
+
+.load-name {
+  position: absolute;
+  margin: auto;
+  font-family: sans-serif;
+  font-size: 22px;
+  top: 30%;
+  margin-left: 0.5rem;
+}
+
+.eye-load {
+  height: 170px;
+  position: absolute;
+  top: 15%;
+}
+
+.eye-lid {
+  height: 50px;
+  position: absolute;
+  top: 13.5%;
+}
+
+.arrow {
+  position: absolute;
+  top: 41%;
+  animation: flow 1s infinite alternate;
+}
+
+.arrow img {
+  height: 30px;
+}
+
+@keyframes flow {
+  from {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0%;
+    transform: translateY(100%);
+  }
+}
+
+.nav-link {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  margin-right: 0.25rem;
+}
+
+.nav-link a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+.nav-link a:hover {
+  text-decoration: underline;
+}
+
+.nav-link li {
+  list-style: none;
+  margin-right: 1rem;
+}
+
+.nav-link ul {
+  margin-right: 1rem;
+}
+
+.nav-link #btn {
+  background-color: darkred;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  box-shadow: darkred;
+  position: relative;
+}
+
+.nav-link #btn:hover {
+  border-bottom: solid #600404;
+  bottom: 15%;
+}
+.nav-link #btn:active {
+  border-bottom: none;
+  top: 2.5%;
+  transition: 2s;
+}
+
+.preload {
+  position: flex;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #991a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.cmrj {
+  width: 450px;
+}
+
+.arrow-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 1em;
+  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.burguer {
+  display: none;
+  padding: 1.25rem;
+  cursor: pointer;
+}
+
+.burguer div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-link {
+    width: 50%;
+    transition: 0.25s;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-link {
+    position: absolute;
+    right: 0;
+    height: 12.5vh;
+    width: 100%;
+    top: 12.5vh;
+    background-color: #991a1a;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .nav-link li {
+    margin-right: 0;
+    margin: auto;
+  }
+
+  .nav-active #btn:hover {
+    border-bottom: none;
+  }
+
+  .burguer {
+    display: block;
+  }
+
+  .nav-active {
+    transform: translateX(0%);
+  }
+
+  .cmrj {
+    width: 350px;
+  }
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
