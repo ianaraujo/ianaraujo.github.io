@@ -306,12 +306,13 @@ body {
 .article2,
 .article3 {
   background-color: white;
-  height: 375px;
+  height: 330px;
   width: 350px;
   border-radius: 15px;
   margin-bottom: 50px;
   margin-left: 15px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .article1 img,
@@ -323,18 +324,27 @@ body {
   border-top-right-radius: 15px;
 }
 
-.text-box{
-
+.text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
 }
 
-.art-title{
-
+.art-title {
+  font-family: "Poppins", sans-serif;
+  font-size: large;
 }
 
-.art-sub{
-
+.art-sub {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.by{
-  
+.by {
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  font-weight: 200;
 }
