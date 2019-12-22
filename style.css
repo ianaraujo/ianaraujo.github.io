@@ -4,13 +4,17 @@
   box-sizing: border-box;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   position: relative;
   width: 100%;
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  background-color: #f1f1f1;
+  background-color: #640b0b ;
 }
 
 #content-wrap {
@@ -27,7 +31,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  background-color: #991a1a;
+  background-color:#640b0b;
 }
 
 .main-footer {
@@ -120,7 +124,7 @@ body {
 .arrow {
   position: absolute;
   top: 41%;
-  animation: flow 1s infinite alternate;
+  animation: flow 0.75s infinite alternate;
 }
 
 .arrow img {
@@ -177,7 +181,7 @@ body {
 }
 
 .nav-link #btn:hover {
-  border-bottom: solid #600404;
+  border-bottom: solid #460303;
   bottom: 15%;
 }
 .nav-link #btn:active {
@@ -191,7 +195,7 @@ body {
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: #991a1a;
+  background-color:;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -208,6 +212,11 @@ body {
 
 .cmrj {
   width: 450px;
+}
+
+.content-wrap {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 .arrow-left {
@@ -292,6 +301,41 @@ body {
   }
 }
 
+.welcome {
+  width: 100%;
+  height: 750px;
+}
+.welcome img {
+  height: ;
+  width: 100%;
+}
+
+.arrow2 {
+  position: relative;
+  top: 10%;
+  animation: flow 0.75s infinite alternate;
+}
+
+.arrow2 img {
+  height: 30px;
+}
+
+.welcome-head {
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  top: 20%;
+  left: 6.5%;
+}
+
+.welcome-sub {
+  color: white;
+  font-size: 35px;
+  position: absolute;
+  top: 27.5%;
+  left: 7.25%;
+}
+
 .wrapper {
   height: 100vh;
   display: flex;
@@ -299,17 +343,17 @@ body {
   align-items: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
-  margin-top: 5vh;
+  background-color: white;
 }
 
 .article1,
 .article2,
 .article3 {
-  background-color: white;
-  height: 330px;
-  width: 350px;
+  background-color: #640b0b;
+  height: 350px;
+  width: 375px;
   border-radius: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   margin-left: 15px;
   margin-right: 15px;
   cursor: pointer;
@@ -319,7 +363,7 @@ body {
 .article2 img,
 .article3 img {
   height: 225px;
-  width: 350px;
+  width: 375px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -327,24 +371,30 @@ body {
 .text-box {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0.5rem;
   margin-left: 0.5rem;
+  text-align: left;
+  text-justify: kashida;
 }
 
 .art-title {
   font-family: "Poppins", sans-serif;
   font-size: large;
+  color: white;
 }
 
 .art-sub {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 500;
+  padding-top: 2.5px;
+  color: white;
 }
 
 .by {
   font-family: "Poppins", sans-serif;
   font-size: 12.5px;
   font-weight: 200;
+  color: white;
 }
