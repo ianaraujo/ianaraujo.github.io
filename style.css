@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  background-color: #640b0b ;
+  background-color: #640b0b;
 }
 
 #content-wrap {
@@ -31,12 +31,12 @@ body {
   justify-content: space-between;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  background-color:#640b0b;
+  background-color: #640b0b;
 }
 
 .main-footer {
   font-family: "Poppins", sans-serif;
-  background-color: darkred;
+  background-color: #640b0b;
   position: relative;
   width: 100%;
   height: 60px;
@@ -74,6 +74,7 @@ body {
 
 .arrow-left {
   margin-left: 1.5rem;
+  position: fixed;
 }
 
 .logo {
@@ -195,7 +196,7 @@ body {
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color:;
+  background-color: ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,16 +304,16 @@ body {
 
 .welcome {
   width: 100%;
-  height: 750px;
+  height: 700px;
 }
 .welcome img {
-  height: ;
+  height: 700px;
   width: 100%;
 }
 
 .arrow2 {
-  position: relative;
-  top: 10%;
+  position: fixed;
+  top: 80%;
   animation: flow 0.75s infinite alternate;
 }
 
@@ -333,17 +334,29 @@ body {
   font-size: 35px;
   position: absolute;
   top: 27.5%;
-  left: 7.25%;
+  left: 7.5%;
+}
+
+.opener {
+  color: #640b0b;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  height: 150px;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
 }
 
 .wrapper {
-  height: 100vh;
+  height: calc(100% - 100px);
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
   background-color: white;
+  padding: 10px;
+  padding-bottom: 47.5px;
 }
 
 .article1,
@@ -351,19 +364,19 @@ body {
 .article3 {
   background-color: #640b0b;
   height: 350px;
-  width: 375px;
+  width: 325px;
   border-radius: 15px;
-  margin-bottom: 40px;
   margin-left: 15px;
   margin-right: 15px;
+  margin-top: 30px;
   cursor: pointer;
 }
 
 .article1 img,
 .article2 img,
 .article3 img {
-  height: 225px;
-  width: 375px;
+  height: 200px;
+  width: 325px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -372,10 +385,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0.5rem;
+  padding: 0.25rem;
   margin-left: 0.5rem;
   text-align: left;
-  text-justify: kashida;
 }
 
 .art-title {
@@ -397,4 +409,19 @@ body {
   font-size: 12.5px;
   font-weight: 200;
   color: white;
+}
+
+.vermais {
+  align-content: center;
+  background-color: #991a1a;
+  margin-top: 3rem;
+  margin-left: 120px;
+  margin-right: 120px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12.5px;
+  font-weight: 200;
+  color: white;
+  text-decoration: none;
 }
