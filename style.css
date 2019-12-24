@@ -99,6 +99,7 @@ body {
 
 .page-name-ian {
   letter-spacing: 10px;
+  font-weight: 1000;
 }
 
 .load-name {
@@ -312,8 +313,8 @@ body {
 }
 
 .arrow2 {
-  position: fixed;
-  top: 80%;
+  position: absolute;
+  bottom: 80%;
   animation: flow 0.75s infinite alternate;
 }
 
@@ -338,13 +339,41 @@ body {
 }
 
 .opener {
-  color: #640b0b;
+  background-color: white;
+  height: 160px;
   display: flex;
   align-items: center;
-  padding-left: 2rem;
-  height: 150px;
+}
+
+.search {
+  position: relative;
   background-color: white;
+  margin-left: 4.5rem;
+  height: 40px;
+  width: 300px;
+  border-radius: 20px;
   font-family: "Poppins", sans-serif;
+  outline: none;
+  border: 2px solid lightgray;
+  padding: 0 20px;
+  font-size: 1rem;
+  outline: none;
+  color: black;
+}
+
+.search:focus {
+  border: 2px solid #991a1a;
+  transition: 0.25s ease-in-out;
+  color: #991a1a;
+}
+
+input::-webkit-input-placeholder {
+  opacity: 100%;
+}
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+  
 }
 
 .wrapper {
@@ -355,26 +384,32 @@ body {
   flex-wrap: wrap;
   align-content: flex-start;
   background-color: white;
-  padding: 10px;
   padding-bottom: 47.5px;
 }
 
 .article1,
 .article2,
-.article3 {
-  background-color: #640b0b;
-  height: 350px;
+.article3,
+.article4,
+.article5,
+.article6 {
+  background-color: white;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 340px;
   width: 325px;
   border-radius: 15px;
   margin-left: 15px;
   margin-right: 15px;
-  margin-top: 30px;
+  margin-bottom: 70px;
   cursor: pointer;
 }
 
 .article1 img,
 .article2 img,
-.article3 img {
+.article3 img,
+.article4 img,
+.article5 img,
+.article6 img {
   height: 200px;
   width: 325px;
   border-top-left-radius: 15px;
@@ -393,7 +428,7 @@ body {
 .art-title {
   font-family: "Poppins", sans-serif;
   font-size: large;
-  color: white;
+  color: black;
 }
 
 .art-sub {
@@ -401,20 +436,20 @@ body {
   font-size: 15px;
   font-weight: 500;
   padding-top: 2.5px;
-  color: white;
+  color: black;
 }
 
 .by {
   font-family: "Poppins", sans-serif;
   font-size: 12.5px;
   font-weight: 200;
-  color: white;
+  color: black;
 }
 
 .vermais {
   align-content: center;
   background-color: #991a1a;
-  margin-top: 3rem;
+  margin-bottom: 20px;
   margin-left: 120px;
   margin-right: 120px;
   padding: 0.75rem 1.5rem;
