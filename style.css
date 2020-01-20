@@ -373,7 +373,6 @@ input::-webkit-input-placeholder {
 input:focus::-webkit-input-placeholder {
   opacity: 0;
   transition: 0.25s ease-in-out;
-  
 }
 
 .wrapper {
@@ -402,6 +401,14 @@ input:focus::-webkit-input-placeholder {
   margin-right: 15px;
   margin-bottom: 70px;
   cursor: pointer;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
 }
 
 .article1 img,
@@ -461,16 +468,24 @@ input:focus::-webkit-input-placeholder {
   text-decoration: none;
 }
 
-.up img{
+.up img {
   position: absolute;
   bottom: 30px;
   right: 60px;
-  height: 65px;
-  padding: 1rem;
+  height: 60px;
+  padding: 15px;
   border-radius: 50%;
   background-color: rgb(211, 5, 5);
   z-index: 2;
-
-
 }
 
+.article1:hover,
+.article2:hover,
+.article3:hover,
+.article4:hover,
+.article5:hover,
+.article6:hover {
+  -webkit-transform: translateY(-9px);
+  transform: translateY(-9px);
+  transition: 0.5s ease-in-out;
+}
