@@ -14,7 +14,11 @@ body {
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  background-color: #640b0b;
+  background-color: white;
+}
+
+.welcome{
+  background-color: rgb(0, 50, 99);
 }
 
 #content-wrap {
@@ -31,7 +35,8 @@ body {
   justify-content: space-between;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  background-color: #640b0b;
+  background-color: white;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);  
 }
 
 .main-footer {
@@ -88,7 +93,7 @@ body {
 .page-name-ian,
 .load-name {
   align-items: center;
-  color: white;
+  color: rgb(0, 50, 99);
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 15px;
@@ -102,6 +107,11 @@ body {
   font-weight: 1000;
 }
 
+.preload{
+
+background-color: rgb(0, 50, 99);
+}
+
 .load-name {
   position: absolute;
   margin: auto;
@@ -109,6 +119,7 @@ body {
   font-size: 22px;
   top: 30%;
   margin-left: 0.5rem;
+  color: white;
 }
 
 .eye-load {
@@ -154,14 +165,14 @@ body {
 }
 
 .nav-link a {
-  color: white;
+  color: rgb(0, 50, 99);
   text-decoration: none;
   letter-spacing: 3px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .nav-link a:hover {
-  text-decoration: underline;
+  color: #991a1a;
 }
 
 .nav-link li {
@@ -174,16 +185,17 @@ body {
 }
 
 .nav-link #btn {
-  background-color: darkred;
+  background-color: rgb(0, 50, 99);
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   text-decoration: none;
-  box-shadow: darkred;
+  box-shadow: rgb(0, 50, 99);
   position: relative;
+  color: white;
 }
 
 .nav-link #btn:hover {
-  border-bottom: solid #460303;
+  border-bottom: solid rgb(0, 19, 37);
   bottom: 15%;
 }
 .nav-link #btn:active {
@@ -289,6 +301,7 @@ body {
 
   .cmrj {
     width: 350px;
+    fill: rgb(0, 50, 99);
   }
 }
 
@@ -489,3 +502,4 @@ input:focus::-webkit-input-placeholder {
   transform: translateY(-9px);
   transition: 0.5s ease-in-out;
 }
+
