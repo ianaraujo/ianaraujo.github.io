@@ -17,8 +17,8 @@ body {
   background-color: white;
 }
 
-.welcome{
-  background-color: rgb(0, 50, 99);
+.welcome {
+  background-color: #e7e8f5;
 }
 
 #content-wrap {
@@ -36,15 +36,15 @@ body {
   align-items: center;
   font-family: "Poppins", sans-serif;
   background-color: white;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);  
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .main-footer {
   font-family: "Poppins", sans-serif;
-  background-color: #640b0b;
+  background-color: white;
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 120px;
 }
 
 .footer-nav ul {
@@ -93,7 +93,7 @@ body {
 .page-name-ian,
 .load-name {
   align-items: center;
-  color: rgb(0, 50, 99);
+  color: #1f6cb0;
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 15px;
@@ -107,9 +107,8 @@ body {
   font-weight: 1000;
 }
 
-.preload{
-
-background-color: rgb(0, 50, 99);
+.preload {
+  background-color: #212a53;
 }
 
 .load-name {
@@ -165,14 +164,14 @@ background-color: rgb(0, 50, 99);
 }
 
 .nav-link a {
-  color: rgb(0, 50, 99);
+  color: #1f6cb0;
   text-decoration: none;
   letter-spacing: 3px;
   font-size: 15px;
 }
 
 .nav-link a:hover {
-  color: #991a1a;
+  color: #70a3c4;
 }
 
 .nav-link li {
@@ -185,17 +184,18 @@ background-color: rgb(0, 50, 99);
 }
 
 .nav-link #btn {
-  background-color: rgb(0, 50, 99);
+  background-color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
+  border: 1.5px solid #1f6cb0;
   text-decoration: none;
   box-shadow: rgb(0, 50, 99);
   position: relative;
-  color: white;
+  color: #1f6cb0;
 }
 
 .nav-link #btn:hover {
-  border-bottom: solid rgb(0, 19, 37);
+  border-bottom: solid #1f6cb0;
   bottom: 15%;
 }
 .nav-link #btn:active {
@@ -336,7 +336,7 @@ background-color: rgb(0, 50, 99);
 }
 
 .welcome-head {
-  color: white;
+  color: #212a53;
   font-size: 100px;
   position: absolute;
   top: 20%;
@@ -344,48 +344,18 @@ background-color: rgb(0, 50, 99);
 }
 
 .welcome-sub {
-  color: white;
+  color: #212a53;
   font-size: 35px;
   position: absolute;
-  top: 27.5%;
+  top: 26%;
   left: 7.5%;
 }
 
 .opener {
-  background-color: white;
-  height: 160px;
+  background-color: #212a53;
+  height: 100px;
   display: flex;
   align-items: center;
-}
-
-.search {
-  position: relative;
-  background-color: white;
-  margin-left: 4.5rem;
-  height: 40px;
-  width: 300px;
-  border-radius: 20px;
-  font-family: "Poppins", sans-serif;
-  outline: none;
-  border: 2px solid lightgray;
-  padding: 0 20px;
-  font-size: 1rem;
-  outline: none;
-  color: black;
-}
-
-.search:focus {
-  border: 2px solid #991a1a;
-  transition: 0.25s ease-in-out;
-  color: #991a1a;
-}
-
-input::-webkit-input-placeholder {
-  opacity: 100%;
-}
-input:focus::-webkit-input-placeholder {
-  opacity: 0;
-  transition: 0.25s ease-in-out;
 }
 
 .wrapper {
@@ -395,7 +365,7 @@ input:focus::-webkit-input-placeholder {
   align-items: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
-  background-color: white;
+  background-color: #212a53;
   padding-bottom: 47.5px;
 }
 
@@ -410,8 +380,8 @@ input:focus::-webkit-input-placeholder {
   height: 340px;
   width: 325px;
   border-radius: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 70px;
   cursor: pointer;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -468,7 +438,7 @@ input:focus::-webkit-input-placeholder {
 
 .vermais {
   align-content: center;
-  background-color: #991a1a;
+  background-color: #212a53;
   margin-bottom: 20px;
   margin-left: 120px;
   margin-right: 120px;
@@ -478,18 +448,27 @@ input:focus::-webkit-input-placeholder {
   font-size: 12.5px;
   font-weight: 200;
   color: white;
+  border: 1.5px solid white;
   text-decoration: none;
+}
+
+.vermais:hover {
+  background-color: white;
+  color: #212a53;
+  transition: ease-in 0.25s;
 }
 
 .up img {
   position: absolute;
-  bottom: 30px;
+  bottom: 90px;
   right: 60px;
   height: 60px;
   padding: 15px;
   border-radius: 50%;
-  background-color: rgb(211, 5, 5);
+  background-color: #e7e8f5;
+  fill: #212a53;
   z-index: 2;
+  transform: rotate(90deg);
 }
 
 .article1:hover,
@@ -502,4 +481,3 @@ input:focus::-webkit-input-placeholder {
   transform: translateY(-9px);
   transition: 0.5s ease-in-out;
 }
-
