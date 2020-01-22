@@ -18,7 +18,7 @@ body {
 }
 
 .welcome {
-  background-color: #e7e8f5;
+  background-color: white;
 }
 
 #content-wrap {
@@ -26,7 +26,7 @@ body {
 }
 
 .main-header {
-  min-height: 12.5vh;
+  min-height: 15vh;
 }
 
 .main-header,
@@ -37,6 +37,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: white;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 1.25px solid #f3f3f3;
 }
 
 .main-footer {
@@ -222,10 +223,16 @@ body {
   align-items: center;
   width: 100%;
   min-height: 100vh;
+  fill: grey;
+}
+
+.tool #A8:hover{
+  fill: red;
 }
 
 .cmrj {
-  width: 450px;
+  width: 450px
+  ;
 }
 
 .content-wrap {
@@ -298,11 +305,6 @@ body {
   .nav-active {
     transform: translateX(0%);
   }
-
-  .cmrj {
-    width: 350px;
-    fill: rgb(0, 50, 99);
-  }
 }
 
 @keyframes navLinkFade {
@@ -353,9 +355,23 @@ body {
 
 .opener {
   background-color: #212a53;
-  height: 100px;
+  height: 150px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.destaque{
+  color: white;
+  font-size: 50px;
+  margin-left: 5rem;
+}
+
+.underline{
+  height: 5px;
+  width: 250px;
+  background-color: white;
+  margin-left: 5rem;
 }
 
 .wrapper {
@@ -375,8 +391,6 @@ body {
 .article4,
 .article5,
 .article6 {
-  background-color: white;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
   height: 340px;
   width: 325px;
   border-radius: 15px;
@@ -400,25 +414,26 @@ body {
 .article4 img,
 .article5 img,
 .article6 img {
-  height: 200px;
+  height: 250px;
   width: 325px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  
 }
 
 .text-box {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0.25rem;
-  margin-left: 0.5rem;
+  padding: 0.5rem;
+  margin-left: 0.25rem;
   text-align: left;
 }
 
 .art-title {
   font-family: "Poppins", sans-serif;
   font-size: large;
-  color: black;
+  color:white;
 }
 
 .art-sub {
