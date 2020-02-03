@@ -11,7 +11,7 @@
     />
     <link href="style.css" rel="stylesheet" />
   </head>
-  <body class="container" id="obs">
+  <body class="container2" id="obs">
     <div class="content-wrap">
       <div class="preload">
         <a href="index.html">
@@ -24,10 +24,28 @@
         <h3 class="load-name">Observatório</h3>
         <a href="#tool" class="arrow"> <img src="/svg/arrow.svg"/></a>
       </div>
+      <section class="select">
+        <select name="select1" id="select1" onchange="populate('select1', 'select2')">
+          <option value="">Escolha um partido</option>
+          <option value="PT">PT</option>
+          <option value="DEM">DEM</option>
+          <option value="PDT">PDT</option>
+          <option value="PV">PV</option>
+        </select>
+        <select name="select2" id="select2">
+          <!--<option value="">Escolha um vereador</option>
+          <option value="Leandro Lyra">Leandro Lyra</option>
+          <option value="Carlos Bolsonaro">Carlos Bolsonaro</option>
+          <option value="Zico Bacana">Zico Bacana</option>
+          <option value="Leonel Brizola Neto">Leonel Brizola Neto</option>-->
+        </select>
+        <div class="select-arrow1" id="primer"></div>
+        <div class="select-arrow2" id="lado"></div>
+      </section>
       <div id="tool" class="tool">
         <svg class="cmrj"
         width="" 
-        height="150" viewBox="0 0 636 253" xmlns="http://www.w3.org/2000/svg">
+        height="200" viewBox="0 0 636 253" xmlns="http://www.w3.org/2000/svg">
           <circle id="A8" cx="241" cy="225" r="18"/>
           <ellipse cx="141.5" cy="226" rx="17.5" ry="18"/>
           <ellipse cx="291" cy="224.5" rx="18" ry="17.5"/>
@@ -81,6 +99,53 @@
           <circle cx="568.5" cy="25.5" r="17.5"/>
           </svg>          
       </div>
+    <section class="senador-tool">
+      <section class="senador">
+        <div class="identidade">
+          <img src="img /iANS8FYi_400x400.jpg" alt="">
+          <p>Partido:
+            <a href="">NOVO</a>
+          </p>
+          <p id="descricao">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, tenetur beatae amet ut ex dolorem facere consectetur reprehenderit voluptatum rerum corrupti eligendi reiciendis minima, culpa totam, itaque fuga eveniet vel?</p>
+          <div class="site">
+          <p>Site:
+            <a href="">leandrolyra.com.br</a>
+          </p>
+          <p>Contato:
+            <a href="">leandrolyrarj@gmail.com</a>
+          </p>
+          </div>
+          <div class="redes">
+            <a href="">
+              <img id="redes" src="svg/instagram.svg" alt="">
+            </a>
+            <a href="">
+              <img id="redes" src="svg/twitter.svg" alt="">
+            </a>
+            <a href="">
+              <img id="redes" src="svg/facebook.svg" alt="">
+            </a>
+          </div>
+
+        </div>
+        <div class="other">
+          <div class="pl-intro">
+            <h2>PROJETOS DE LEI</h2>
+            <a href="">
+            <img st src="svg/close.svg" alt="">
+          </a>
+          </div>
+          <div class="projetos-lei">
+          <div class="pl">
+            <a target="_blank" href="https://mail.camara.rj.gov.br/APL/Legislativos/scpro1720.nsf/b63581b044c6fb760325775900523a41/34ff7c9ea9462b4883258456005f2ec4?OpenDocument">1257/2019</a>
+            <p>INSTITUI A DECLARAÇÃO MUNICIPAL DE DIREITOS DE LIBERDADE ECONÔMICA, ESTABELECE NORMAS PARA ATOS DE LIBERAÇÃO DE ATIVIDADE ECONÔMICA E A ANÁLISE DE IMPACTO REGULATÓRIO E DÁ OUTRAS PROVIDÊNCIAS => 20190301457</p>
+            <div>22/08/2019</div>
+            <span style="background-color: green;" class="dot"></span>
+          </div>
+          </div>
+        </div>
+      </section>
+    </section>
     </div>
     <script src="app.js"></script>
   </body>
