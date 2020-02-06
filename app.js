@@ -1,18 +1,3 @@
-const navSlide = () => {
-  const burguer = document.querySelector(".burguer");
-  const nav = document.querySelector(".nav-link");
-  const navLinks = document.querySelectorAll(".nav-link li");
-
-  burguer.addEventListener("click", () => {
-    nav.classList.toggle("nav-active");
-  });
-  // animate links
-  navLinks.forEach((link, index) => {
-    link.style.animation = "navLinkFade 0.5s ease forwards ${index / 7 + 2}s";
-  });
-};
-
-navSlide();
 
 function populate(s1, s2){
   var s1  = document.getElementById(s1);
@@ -45,7 +30,8 @@ function populate(s1, s2){
   } else if(s1.value == "DEM"){
     var optionArray = ["escolha|Escolha um vereador", "Alexandre Isquierdo | Alexandre Isquierdo", "Cesar Maia | Cesar Maia", "Matheus Floriano | Matheus Floriano", "Prof. Célio Lupparelli | Prof. Célio Lupparelli"];
 
-  }
+  } 
+
   for(var option in optionArray){
     var pair = optionArray[option] .split("|");
     var newOption = document.createElement("option");
@@ -54,3 +40,25 @@ function populate(s1, s2){
     s2.options.add(newOption);
   }
 }
+
+var slt = document.getElementById('select2');
+var senador = document.getElementById('senador');
+
+function show(){
+  if (slt.value == "Cesar Maia ") {
+
+    document.querySelector(".senador").style.visibility = "visible";
+    document.querySelector(".senador").style.opacity = "1";
+  } else {
+    document.querySelector(".senador").style.visibility = "hidden";
+    document.querySelector(".senador").style.opacity = "0";
+  }
+}
+
+
+
+
+
+
+
+
