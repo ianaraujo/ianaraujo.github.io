@@ -649,7 +649,8 @@ body {
   margin-bottom: 150px;
 }
 
-.select {
+.select,
+.select2 {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -663,7 +664,8 @@ body {
   margin-left: 2rem;
 }
 
-.select #select1 {
+.select #select1,
+.select2 #select3 {
   width: 200px;
   height: 45px;
   margin-top: 1.5rem;
@@ -676,7 +678,8 @@ body {
   height: 45px;
 }
 
-.select h2{
+.select h2,
+.select2 h2{
   font-family: "Poppins", sans-serif;
   font-size: 12px;
   margin-top: 2rem;
@@ -745,9 +748,15 @@ select:hover{
     padding: 3px;
 }
 
+.select2{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .rights{
   position: absolute;
-  top: 23rem;
+  top: 22.5rem;
   width: 225px;
   font-family: "Poppins", sans-serif;
     font-size: 10px;
@@ -757,11 +766,13 @@ select:hover{
 }
 
 .senador{
-  position: relative;
+  position: absolute;
+  top: 5%;
+  left: 22.5%;
   background-color: #f3f3f3;
   border-radius: .5rem;
   height: 90%;
-  width: 75%;
+  width: 72.5%;
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -770,6 +781,7 @@ select:hover{
   margin-left: 2rem;
   margin-right: 2rem;
   visibility: hidden;
+  opacity: 0;
 }
 
 .identidade{
@@ -896,9 +908,30 @@ select:hover{
   fill: #1f6cb0;
 }
 
-.legenda{
-  position: absolute;
-  width: 50px;
+.exp{
+  background-color: #f3f3f3;
+  border-top: 1px solid #dedede;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-cmrj{
   background-color: white;
-  bottom: 0;
+  position: absolute;
+  top: 27.5%;
+  left: 47.5%;
+  border-radius: .5rem
+  ;
+}
+
+circle{
+  -webkit-transition:2s;
+  -moz-transition:2s;
+  -ms-transition: 2s;
+  -o-transition:2s;
+  transition:2s;
 }
