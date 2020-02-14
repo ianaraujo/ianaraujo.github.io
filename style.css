@@ -117,7 +117,7 @@ body {
 }
 
 .preload {
-  background-color: #212a53;
+  background-color: #1f6cb0;
 }
 
 .load-name {
@@ -635,15 +635,53 @@ body {
   filter: grayscale(0%);
 }
 
+.tab{
+  height: 10vh;
+  width: 100%;
+  background-color: #1f6cb0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.tab button{
+  background-color: #f3f3f3;
+  color: #1f6cb0;
+  width:250px;
+  height: 50px;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  margin-left: .5rem;
+  margin-left: .5rem;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  -webkit-transition:.5s;
+  -moz-transition:.5s;
+  -ms-transition: .5s;
+  -o-transition:.5s;
+  transition:.5s;
+}
+
+.tab button:hover{
+  background-color: #2d7bbe;
+  color: white;
+}
+
+
 .tool {
   background-color: #f3f3f3;
   display: flex;
   flex-direction: row;
-  position: relative;
+  position: absolute;
   align-items: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
 }
+
 
 .cmrj{
   margin-bottom: 150px;
@@ -756,7 +794,7 @@ select:hover{
 
 .rights{
   position: absolute;
-  top: 22.5rem;
+  top: 21rem;
   width: 225px;
   font-family: "Poppins", sans-serif;
     font-size: 10px;
@@ -910,9 +948,8 @@ select:hover{
 
 .exp{
   background-color: #f3f3f3;
-  border-top: 1px solid #dedede;
-  position: relative;
-  height: 100vh;
+  position: absolute;
+  height: 90vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -922,8 +959,8 @@ select:hover{
 .svg-cmrj{
   background-color: white;
   position: absolute;
-  top: 27.5%;
-  left: 47.5%;
+  top: 5%;
+  left: 26%;
   border-radius: .5rem
   ;
 }
