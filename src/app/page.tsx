@@ -63,10 +63,10 @@ const Home = async () => {
           {/* Introducing myself */}
           <div>
             <p>
-              Hello! I'm Ian, a Data Scientist & Developer based in Brazil.
+              {`Hello! I'm Ian, a Data Scientist & Developer based in Brazil.
               Enjoy building useful apps and projects with code, also share
               ideas among some of my interests: finance, entrepreneurship,
-              andtechnology!
+              andtechnology!`}
             </p>
           </div>
           <div className="mt-5">
