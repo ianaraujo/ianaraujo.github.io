@@ -2,7 +2,6 @@
 
 const nextConfig = {
   output: "export",
-  // basePath: '/ianaraujo.com',
   images: {
     unoptimized: true,
   },
