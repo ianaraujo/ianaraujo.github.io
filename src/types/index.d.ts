@@ -8,4 +8,5 @@ export interface PostMeta {
   
   export interface Post extends PostMeta {
     content: string;
+    readingTime: number;
   }

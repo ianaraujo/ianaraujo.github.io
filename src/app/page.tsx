@@ -42,7 +42,7 @@ const Home = async () => {
           />
           <div className="space-y-1">
             <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
-            <p className="text-zinc-500">Data Scientist and Developer</p>
+            <p className="text-zinc-500">Cientista de Dados e Desenvolvedor</p>
           </div>
           {/* Social Media */}
           <div className="flex justify-between">
@@ -109,7 +109,7 @@ const Home = async () => {
                     <div className="w-2 h-2 rounded-full bg-zinc-600 z-10"></div>
                   </div>
                   <div className="ml-2 space-y-1">
-                    <h3 className="text-base font-semibold">Data Analyst</h3>
+                    <h3 className="text-base font-semibold">Analista de Dados</h3>
                     <p className="text-sm text-zinc-600">Ágora Advocacy</p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const Home = async () => {
                     <div className="w-2 h-2 rounded-full bg-zinc-200 z-10"></div>
                   </div>
                   <div className="ml-2 space-y-1">
-                    <h3 className="text-base font-semibold">Researcher</h3>
+                    <h3 className="text-base font-semibold">Pesquisador</h3>
                     <p className="text-sm text-zinc-600">FGV EBAPE</p>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ const Home = async () => {
                   </div>
                   <div className="ml-2 space-y-1">
                     <h3 className="text-base font-semibold">
-                      Freelance Consultant
+                      Consultor
                     </h3>
                     <p className="text-sm text-zinc-600">
                       Instituo Lima Barreto, Ministéria da Edução, TRE-BA
@@ -165,8 +165,8 @@ const Home = async () => {
           <section>
             <h2 className="text-xl font-semibold mb-8">Contact</h2>
             <p className="text-lg text-justify">
-              Let's work on something together! You can send me an email or drop
-              a DM on any social media.
+              {`Let's work on something together! You can send me an email or drop
+              a DM on any social media.`}
             </p>
             <div className="flex items-center mt-6 gap-2">
               <span className="text-lg">🛩️</span>
