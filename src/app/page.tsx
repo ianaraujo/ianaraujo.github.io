@@ -2,9 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-import Image from "next/image";
 import Link from "next/link";
 
+import { Header } from "@/components/Header";
 import { PostMeta } from "@/types";
 
 const getPosts = async (): Promise<PostMeta[]> => {
@@ -32,75 +32,19 @@ const Home = async () => {
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-10 w-full max-w-screen-md">
-        <div className="flex flex-col space-y-5">
-          <Image
-            src="/avatar.png"
-            alt="Avatar"
-            width={64}
-            height={64}
-            className="rounded-full"
-          />
-          <div className="space-y-1">
-            <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
-            <p className="text-zinc-500">Cientista de Dados e Desenvolvedor</p>
-          </div>
-          {/* Social Media */}
-          <div className="flex justify-between">
-            <ul className="flex space-x-4">
-              <li>
-                <a className="group transition duration-300" href="">
-                  Twitter
-                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-                </a>
-              </li>
-              <li>
-                <a
-                  className="group transition duration-300"
-                  href="https://github.com/ianaraujo"
-                >
-                  Github
-                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-                </a>
-              </li>
-              <li>
-                <a className="group transition duration-300" href="https://www.linkedin.com/in/ianvazaraujo/">LinkedIn
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-                </a>
-              </li>
-            </ul>
-            {/* <ul className="flex space-x-2">
-              <li className="text-zinc-900">PT</li>
-              <li className="text-zinc-300">EN</li>
-            </ul> */}
-          </div>
-        </div>
-        {/* Divider */}
-        <div className="py-8">
-          <div className="w-full bg-zinc-200 h-[1px]"></div>
-        </div>
-        {/* Nav
-        <div className="text-sm font-medium mb-8">
-          <ul className="flex items-center gap-6">
-            <li className="px-2 py-1 bg-zinc-800 text-white rounded-md">
-              About
-            </li>
-            <li>Blog</li>
-            <li>Contact</li>
-          </ul>
-        </div> */}
+        <Header />
         <div className="space-y-12">
           {/* Introducing myself */}
           <div className="">
-            <p className="text-xl text-justify">
-              {`Hello! I'm Ian, a Data Scientist & Developer based in Brazil.
-              Enjoy building useful apps and projects with code, also share
-              ideas among some of my interests: finance, entrepreneurship,
-              and technology!`}
+            <p className="text-xl text-justify leading-relaxed">
+              {`👋 Olá! Meu nome é Ian, sou Cientista de Dados e Desenvolvedor, e
+              gosto de trabalhar em projetos interessantes e desafiadores envolvendo dados e tecnologia, 
+              além de compartilhar ideias sobre alguns dos meus interesses: finanças, investimentos e empreendedorismo!`}
             </p>
           </div>
           {/* Experience */}
           <section className="">
-            <h2 className="text-xl font-semibold mb-8">Experience</h2>
+            <h2 className="text-xl font-semibold mb-8">Experiência</h2>
             <div className="relative">
               <div className="absolute left-4 top-0 bottom-0 w-px bg-zinc-200"></div>
               <div className="space-y-8">
@@ -109,7 +53,9 @@ const Home = async () => {
                     <div className="w-2 h-2 rounded-full bg-zinc-600 z-10"></div>
                   </div>
                   <div className="ml-2 space-y-1">
-                    <h3 className="text-base font-semibold">Analista de Dados</h3>
+                    <h3 className="text-base font-semibold">
+                      Analista de Dados
+                    </h3>
                     <p className="text-sm text-zinc-600">Ágora Advocacy</p>
                   </div>
                 </div>
@@ -127,9 +73,7 @@ const Home = async () => {
                     <div className="w-2 h-2 rounded-full bg-zinc-200 z-10"></div>
                   </div>
                   <div className="ml-2 space-y-1">
-                    <h3 className="text-base font-semibold">
-                      Consultor
-                    </h3>
+                    <h3 className="text-base font-semibold">Consultor</h3>
                     <p className="text-sm text-zinc-600">
                       Instituo Lima Barreto, Ministéria da Edução, TRE-BA
                     </p>
@@ -140,7 +84,7 @@ const Home = async () => {
           </section>
           {/* Latest Posts */}
           <section>
-            <h2 className="text-xl font-semibold mb-8">Latest Posts</h2>
+            <h2 className="text-xl font-semibold mb-8">Últimas publicações</h2>
             <ul className="space-y-5">
               {posts.slice(0, 3).map((post) => (
                 <li
@@ -157,7 +101,9 @@ const Home = async () => {
             {posts.length > 3 && (
               <div className="mt-6">
                 <Link href="/blog">
-                  <span className="text-zinc-600 hover:underline">View all posts</span>
+                  <span className="text-zinc-600 hover:underline">
+                    View all posts
+                  </span>
                 </Link>
               </div>
             )}

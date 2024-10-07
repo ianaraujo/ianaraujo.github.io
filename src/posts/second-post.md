@@ -1,10 +1,8 @@
 ---
-title: "Hello World 2"
-date: "2023-09-19"
-description: "My second blog post"
-tag: "Tech"
+title: "Pipeline de ETL completa com dados da ANS usando Databricks, AWS e Spark"
+date: "21/09/2023"
+description: "O objetivo deste projeto é trabalhar com os dados abertos de planos de saúde na plataforma do Databricks. Esse é um desafio interessante para colocar em prática os conhecimentos em processamento distribuído, modelagem de dados e arquitetura Apache Spark."
+tag: "Engenharia de Dados"
 ---
 
-# Hello World
-
-This is my second blog post using Markdown in Next.js!
+Work in progress...

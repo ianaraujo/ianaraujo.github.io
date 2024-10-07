@@ -16,7 +16,7 @@ export function Header() {
           <Link href={"/"}>
             <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
           </Link>
-          <p className="text-zinc-500">Data Scientist and Developer</p>
+          <p className="text-zinc-500">Cientista de Dados e Desenvolvedor</p>
         </div>
         {/* Social Media */}
         <div className="flex justify-between">
