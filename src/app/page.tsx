@@ -7,6 +7,12 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { PostMeta } from "@/types";
 
+
+const parseDateString = (dateString: string): Date => {
+  const [day, month, year] = dateString.split("/").map(Number);
+  return new Date(year, month - 1, day);
+};
+
 const getPosts = async (): Promise<PostMeta[]> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
   const filenames = fs.readdirSync(postsDirectory);
@@ -21,7 +27,11 @@ const getPosts = async (): Promise<PostMeta[]> => {
     return { ...data, slug } as PostMeta;
   });
 
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  posts.sort((a, b) => {
+    const dateA = parseDateString(a.date).getTime();
+    const dateB = parseDateString(b.date).getTime();
+    return dateB - dateA; 
+  });
 
   return posts;
 };

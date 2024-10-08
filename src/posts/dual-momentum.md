@@ -1,7 +1,7 @@
 ---
 title: "Combinando estratégias de momentum para selecionar ativos vencedores"
 description: "Utilizando técnicas de backtest e Python, esse estudo testa uma estratégia chamada \"Dual Momentum\" com ativos indexados: BOVA11, IVVB11 e B5P211"
-date: "08/10/2023"
+date: "09/10/2024"
 tag: "Investimentos"
 ---
 
