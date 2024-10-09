@@ -3,10 +3,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Ian Araujo',
+    template: 'Ian Araujo | %s',
     default: 'Ian Araujo',
   },
-  description: "Personal website and projects",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

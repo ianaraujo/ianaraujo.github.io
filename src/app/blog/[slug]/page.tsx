@@ -41,6 +41,7 @@ const getPost = async (slug: string): Promise<Post> => {
     title: data.title,
     date: data.date,
     description: data.description,
+    image: data.image,
     tag: data.tag,
     slug,
     content: contentHtml,
@@ -69,7 +70,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: post.title,
     description: post.description,
-    authors: [{ name: 'Ian Araujo', url: 'https://ianaraujo.com' }]
+    authors: [{ name: 'Ian Araujo', url: 'https://ianaraujo.com' }],
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: [post.image],
+    }
   };
 }
 
