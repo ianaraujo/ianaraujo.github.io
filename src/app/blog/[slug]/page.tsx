@@ -1,5 +1,7 @@
 // src/app/blog/[slug]/page.tsx
 
+import type { Metadata } from 'next'
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -48,6 +50,17 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({
     slug,
   }));
+}
+
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params;
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    description: post.description,
+  };
 }
 
 // Dynamic Post component as an async Server Component
