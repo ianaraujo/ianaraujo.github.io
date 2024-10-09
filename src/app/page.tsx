@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { PostMeta } from "@/types";
 
-
 const parseDateString = (dateString: string): Date => {
   const [day, month, year] = dateString.split("/").map(Number);
   return new Date(year, month - 1, day);
@@ -30,7 +29,7 @@ const getPosts = async (): Promise<PostMeta[]> => {
   posts.sort((a, b) => {
     const dateA = parseDateString(a.date).getTime();
     const dateB = parseDateString(b.date).getTime();
-    return dateB - dateA; 
+    return dateB - dateA;
   });
 
   return posts;
@@ -47,13 +46,13 @@ const Home = async () => {
           {/* Introducing myself */}
           <div className="">
             <p className="text-xl text-justify leading-relaxed">
-              {`👋 Olá! Meu nome é Ian, sou Cientista de Dados e Desenvolvedor, e
-              gosto de trabalhar em projetos interessantes e desafiadores envolvendo dados e tecnologia, 
+              {`👋 Olá! Meu nome é Ian, trabalho como analista de dados e desenvolvedor, 
+              e gosto de colaborar em projetos interessantes e inovadores envolvendo dados e tecnologia, 
               além de compartilhar ideias sobre alguns dos meus interesses: finanças, investimentos e empreendedorismo!`}
             </p>
           </div>
           {/* Experience */}
-          <section className="">
+          <section>
             <h2 className="text-xl font-semibold mb-8">Experiência</h2>
             <div className="relative">
               <div className="absolute left-4 top-0 bottom-0 w-px bg-zinc-200"></div>
@@ -63,9 +62,14 @@ const Home = async () => {
                     <div className="w-2 h-2 rounded-full bg-zinc-600 z-10"></div>
                   </div>
                   <div className="ml-2 space-y-1">
-                    <h3 className="text-base font-semibold">
-                      Analista de Dados
-                    </h3>
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-base font-semibold">
+                        Analista de Dados
+                      </h3>
+                      <p className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 font-semibold">
+                        ATUAL
+                      </p>
+                    </div>
                     <p className="text-sm text-zinc-600">Ágora Advocacy</p>
                   </div>
                 </div>
@@ -119,18 +123,17 @@ const Home = async () => {
             )}
           </section>
           <section>
-            <h2 className="text-xl font-semibold mb-8">Contact</h2>
+            <h2 className="text-xl font-semibold mb-8">Contato</h2>
             <p className="text-lg text-justify">
-              {`Let's work on something together! You can send me an email or drop
-              a DM on any social media.`}
+              {`Vamos trabalhar juntos! Você pode me mandar um email ou uma DM em qualquer rede social.`}
             </p>
-            <div className="flex items-center mt-6 gap-2">
-              <span className="text-lg">🛩️</span>
+            <div className="flex items-center mt-8 gap-3">
+              <span className="text-lg">🚀</span>
               <p>ianaraujo15@gmail.com</p>
             </div>
           </section>
         </div>
-        <div className="mt-24 mb-12 flex justify-center">
+        <div className="mt-24 mb-10 flex justify-center">
           <span className="">&copy; 2024 Ian Araujo</span>
         </div>
       </div>
