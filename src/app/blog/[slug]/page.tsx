@@ -67,8 +67,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = await getPost(slug);
 
   return {
-    title: `${post.title} | Ian Araujo`,
+    title: post.title,
     description: post.description,
+    authors: [{ name: 'Ian Araujo', url: 'https://ianaraujo.com' }]
   };
 }
 
