@@ -67,12 +67,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = await getPost(slug);
 
   return {
-    title: post.title,
+    title: `${post.title} | Ian Araujo`,
     description: post.description,
   };
 }
 
-// Dynamic Post component as an async Server Component
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const post = await getPost(slug);
