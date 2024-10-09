@@ -4,6 +4,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import rehypeStringify from "rehype-stringify";
 import html from "remark-html";
 import gfm from "remark-gfm";
 
@@ -11,7 +14,7 @@ import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
 import { Post } from "@/types";
 
-// Function to fetch a single post by slug
+
 const getPost = async (slug: string): Promise<Post> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
   const filePath = path.join(postsDirectory, `${slug}.md`);
@@ -19,7 +22,14 @@ const getPost = async (slug: string): Promise<Post> => {
 
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).use(gfm).process(content);
+  const processedContent = await remark()
+    .use(html)
+    .use(gfm)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
+    .process(content);
+
   const contentHtml = processedContent.toString();
 
   const wordCount = content.split(/\s+/).length;
@@ -38,7 +48,6 @@ const getPost = async (slug: string): Promise<Post> => {
   return post;
 };
 
-// Generate static params for all blog posts
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
   const filenames = fs.readdirSync(postsDirectory);
@@ -50,7 +59,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Dynamic Post component as an async Server Component
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const post = await getPost(slug);
@@ -74,9 +82,12 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
         <div
-          className="prose prose-zinc max-w-none"
+          className="prose prose-zinc prose-h3:mb-5 prose-h3:mt-10 max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        <div className="mt-24 mb-10 flex justify-center">
+          <span className="">&copy; 2024 Ian Araujo</span>
+        </div>
       </div>
     </div>
   );
