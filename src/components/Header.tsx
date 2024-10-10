@@ -22,7 +22,7 @@ export function Header() {
         <div className="flex justify-between">
           <ul className="flex space-x-4">
             <li>
-              <a className="group transition duration-300" href="">
+              <a className="group transition duration-300" href="https://x.com/ianvazaraujo">
                 Twitter
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>
