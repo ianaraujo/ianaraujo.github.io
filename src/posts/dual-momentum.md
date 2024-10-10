@@ -74,7 +74,7 @@ Sendo assim, sem qualquer esforço, qualquer investidor poderia montar uma carte
 |                 | CAGR   | Volatilidade | Sharpe Ratio |
 | --------------- | ------ | ------------ | ------------ |
 | IBOV            | 8.92%  | 26.58%       | -0.0404      |
-| CDI             | 10.44% | 23,77%       | 1.8691       |
+| CDI             | 10.44% | 0,23%        | 1.8691       |
 | Naive Portfolio | 11.28% | 12.37%       | 0.1035       |
 | IMA-B 5         | 12.13% | 2.85%        | 0.7477       |
 | SP500 BRL       | 12.14% | 20.89%       | 0.1024       |
