@@ -40,12 +40,12 @@ const Home = async () => {
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-10 w-full max-w-screen-md">
+      <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
         <Header />
         <div className="space-y-12">
           {/* Introducing myself */}
           <div className="">
-            <p className="text-xl text-justify leading-relaxed">
+            <p className="text-xl leading-relaxed">
               {`👋 Olá! Meu nome é Ian, trabalho como analista de dados e desenvolvedor, 
               e gosto de colaborar em projetos interessantes e inovadores envolvendo dados e tecnologia, 
               além de compartilhar ideias sobre alguns dos meus interesses: finanças, investimentos e empreendedorismo!`}
@@ -99,7 +99,7 @@ const Home = async () => {
           {/* Latest Posts */}
           <section>
             <h2 className="text-xl font-semibold mb-8">Últimas publicações</h2>
-            <ul className="space-y-5">
+            <ul className="space-y-4">
               {posts.slice(0, 3).map((post) => (
                 <li
                   key={post.slug}
@@ -124,7 +124,7 @@ const Home = async () => {
           </section>
           <section>
             <h2 className="text-xl font-semibold mb-8">Contato</h2>
-            <p className="text-lg text-justify">
+            <p className="text-lg">
               {`Vamos trabalhar juntos! Você pode me mandar um email ou uma DM em qualquer rede social.`}
             </p>
             <div className="flex items-center mt-8 gap-3">
