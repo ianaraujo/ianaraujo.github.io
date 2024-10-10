@@ -89,7 +89,7 @@ const Home = async () => {
                   <div className="ml-2 space-y-1">
                     <h3 className="text-base font-semibold">Consultor</h3>
                     <p className="text-sm text-zinc-600">
-                      Instituo Lima Barreto, Ministério da Educação, TRE-BA
+                      Instituto Lima Barreto, Ministério da Educação, TRE-BA
                     </p>
                   </div>
                 </div>
