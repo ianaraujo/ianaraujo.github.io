@@ -89,7 +89,7 @@ const Home = async () => {
                   <div className="ml-2 space-y-1">
                     <h3 className="text-base font-semibold">Consultor</h3>
                     <p className="text-sm text-zinc-600">
-                      Instituo Lima Barreto, Ministéria da Edução, TRE-BA
+                      Instituo Lima Barreto, Ministério da Educação, TRE-BA
                     </p>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const Home = async () => {
           <section>
             <h2 className="text-xl font-semibold mb-8">Contato</h2>
             <p className="text-lg">
-              {`Vamos trabalhar juntos! Você pode me mandar um email ou uma DM em qualquer rede social.`}
+              {`Vamos trabalhar juntos! Você pode me mandar um email ou DM em qualquer rede social.`}
             </p>
             <div className="flex items-center mt-8 gap-3">
               <span className="text-lg">🚀</span>

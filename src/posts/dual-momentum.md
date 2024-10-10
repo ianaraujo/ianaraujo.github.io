@@ -1,6 +1,6 @@
 ---
-title: "Dual Momentum: estratégia de investimento sistemática para selecionar ativos vencedores"
-description: "Utilizando técnicas de backtest e Python, esse estudo analisa uma estratégia chamada \"Dual Momentum\" com ativos indexados brasileiros: BOVA11, IVVB11 e B5P211"
+title: "Dual Momentum: estratégia sistemática de investimento para selecionar ativos vencedores"
+description: "Utilizando técnicas de backtest e Python, esse estudo analisa uma estratégia chamada \"Dual Momentum\" com ativos brasileiros indexados: BOVA11, IVVB11 e B5P211"
 image: "/posts/dual-momentum/momentum-shifts.png"
 date: "10/10/2024"
 tag: "Investimentos"
