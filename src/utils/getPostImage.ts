@@ -16,8 +16,6 @@ export const getPost = async (slug: string): Promise<PostMeta> => {
     const imagePath = post.image;
   
     const normalizedImagePath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-  
-    const imageUrl = `https://ianaraujo.com${normalizedImagePath}`;
-  
-    return imageUrl;
+    
+    return normalizedImagePath;
   };

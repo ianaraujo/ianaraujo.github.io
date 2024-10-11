@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     template: "Ian Araujo | %s",
     default: "Ian Araujo",
   },
+  metadataBase: new URL('https://ianaraujo.com')
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
