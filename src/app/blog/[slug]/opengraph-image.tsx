@@ -1,4 +1,4 @@
-import { getImageData } from "@/utils/getPostImage";
+import { getImageUrl } from "@/utils/getPostImage";
 import { ImageResponse } from "next/og";
 
 export const contentType = "image/png";
@@ -10,14 +10,11 @@ export const size = {
 
 export default async function Image({ params }: { params: { slug: string } }) {
     const { slug } = params;
-    const imageData = await getImageData(slug);
-
-    const base64Image = imageData.toString("base64");
-    const dataUri = `data:image/png;base64,${base64Image}`;
+    const imageUrl = await getImageUrl(slug);
 
     return new ImageResponse(
         <img
-            src={dataUri}
+            src={imageUrl}
             style={{ width: "100%", height: "100%" }}
         />
     );

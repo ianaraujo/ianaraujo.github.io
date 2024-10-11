@@ -11,12 +11,13 @@ export const getPost = async (slug: string): Promise<PostMeta> => {
     return { ...data, slug } as PostMeta;
   };
 
-export const getImageData = async (slug: string): Promise<Buffer> => {
-  const post = await getPost(slug);
-  const imagePath = post.image;
-
-  const imageFullPath = path.join(process.cwd(), "public", imagePath);
-  const imageData = fs.readFileSync(imageFullPath);
-
-  return imageData;
-};
+  export const getImageUrl = async (slug: string): Promise<string> => {
+    const post = await getPost(slug);
+    const imagePath = post.image;
+  
+    const normalizedImagePath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  
+    const imageUrl = `https://ianaraujo.com${normalizedImagePath}`;
+  
+    return imageUrl;
+  };
