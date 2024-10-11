@@ -51,18 +51,6 @@ const getPost = async (slug: string): Promise<Post> => {
   return post;
 };
 
-export async function generateStaticParams() {
-  const postsDirectory = path.join(process.cwd(), "src", "posts");
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const slugs = filenames.map((filename) => filename.replace(".md", ""));
-
-  return slugs.map((slug) => ({
-    slug,
-  }));
-}
-
-
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = params;
   const post = await getPost(slug);
@@ -70,6 +58,27 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: post.title,
     description: post.description,
+    openGraph: {
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: '',
+        }
+      ]
+    },
+    twitter: {
+      images: [
+        {
+          url: post.image,
+          width: 800,
+          height: 418,
+          alt: '',
+        }
+      ]
+    },
+    metadataBase: new URL('https://ianaraujo.com')
   };
 }
 
