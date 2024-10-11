@@ -71,11 +71,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: post.title,
     description: post.description,
     authors: [{ name: 'Ian Araujo', url: 'https://ianaraujo.com' }],
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      images: [post.image],
-    }
   };
 }
 
