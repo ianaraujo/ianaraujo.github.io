@@ -116,7 +116,7 @@ const Home = async () => {
               <div className="mt-6">
                 <Link href="/blog">
                   <span className="text-zinc-600 hover:underline">
-                    View all posts
+                    Ver todas publicações
                   </span>
                 </Link>
               </div>

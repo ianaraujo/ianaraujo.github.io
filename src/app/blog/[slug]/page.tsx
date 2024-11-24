@@ -8,14 +8,16 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
+import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
-import html from "remark-html";
-import gfm from "remark-gfm";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+
+import 'katex/dist/katex.min.css';
 
 import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
 import { Post } from "@/types";
-
 
 const getPost = async (slug: string): Promise<Post> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
@@ -25,10 +27,11 @@ const getPost = async (slug: string): Promise<Post> => {
   const { data, content } = matter(fileContents);
 
   const processedContent = await remark()
-    .use(html)
-    .use(gfm)
+    .use(remarkGfm)
+    .use(remarkMath)
     .use(remarkRehype)
     .use(rehypeHighlight)
+    .use(rehypeKatex)
     .use(rehypeStringify)
     .process(content);
 

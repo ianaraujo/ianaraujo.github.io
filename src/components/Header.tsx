@@ -5,13 +5,15 @@ export function Header() {
   return (
     <>
       <div className="flex flex-col space-y-5">
-        <Image
-          src="/avatar.png"
-          alt="Avatar"
-          width={64}
-          height={64}
-          className="rounded-full"
-        />
+        <Link href={"/"}>
+          <Image
+            src="/avatar.png"
+            alt="Avatar"
+            width={64}
+            height={64}
+            className="rounded-full"
+          />
+        </Link>
         <div className="space-y-1">
           <Link href={"/"}>
             <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
@@ -22,7 +24,10 @@ export function Header() {
         <div className="flex justify-between">
           <ul className="flex space-x-4">
             <li>
-              <a className="group transition duration-300" href="https://x.com/ianvazaraujo">
+              <a
+                className="group transition duration-300"
+                href="https://x.com/ianvazaraujo"
+              >
                 Twitter
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>

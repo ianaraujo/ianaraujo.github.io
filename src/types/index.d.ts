@@ -1,6 +1,6 @@
 export interface PostMeta {
     title: string;
-    date: string;
+    date: string; // Format: "DD/MM/YYYY"
     description: string;
     image: string;
     tag: string;
