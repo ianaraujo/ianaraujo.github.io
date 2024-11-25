@@ -1,6 +1,6 @@
 ---
 title: "Desafios na construção de classificadores robustos em conjuntos de dados desbalanceados"
-description: "Em cenários de juros altos, que são comuns no Brasil, os investidores constantemente se deparam com um conflito entre aproveitar boas taxas na Renda Fixa ou baixos múltiplos na Renda Variável"
+description: "Explorando técnicas para treinar modelos preditivos em dados desbalanceados, com estudos de caso sobre detecção de fraudes e discussões sobre reamostragem e uso de métricas eficazes"
 image: "/posts/ml-class-imbalance/smote.png"
 date: "25/11/2024"
 tag: "Ciência de Dados"
