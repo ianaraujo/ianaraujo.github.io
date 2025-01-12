@@ -42,13 +42,13 @@ const Home = async () => {
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
         <Header />
-        <div className="space-y-12">
+        <div className="space-y-10">
           {/* Introducing myself */}
           <div className="">
-            <p className="text-xl leading-relaxed">
-              {`👋 Olá! Meu nome é Ian, trabalho como analista de dados e desenvolvedor, 
-              e gosto de colaborar em projetos interessantes e inovadores envolvendo dados e tecnologia, 
-              além de compartilhar ideias sobre alguns dos meus interesses: finanças, investimentos e empreendedorismo!`}
+            <p className="text-xl leading-relaxed text-justify">
+              {`👋 Olá! Meu nome é Ian, sou cientista de dados de profissão e desenvolvedor nas horas vagas. 
+              Sou um grande entusiasta de projetos que misturam inovação, dados e tecnologia. Por aqui, compartilho 
+              algumas ideias sobre a minha área e outros interesses: finanças, investimentos e empreendedorismo!`}
             </p>
           </div>
           {/* Experience */}
@@ -64,7 +64,7 @@ const Home = async () => {
                   <div className="ml-2 space-y-1">
                     <div className="flex items-center gap-3">
                       <h3 className="text-base font-semibold">
-                        Analista de Dados
+                        Cientista de Dados
                       </h3>
                       <p className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 font-semibold">
                         ATUAL
@@ -98,7 +98,7 @@ const Home = async () => {
           </section>
           {/* Latest Posts */}
           <section>
-            <h2 className="text-xl font-semibold mb-8">Últimas publicações</h2>
+            <h2 className="text-xl font-semibold pt-4 mb-8">Últimas publicações</h2>
             <ul className="space-y-4">
               {posts.slice(0, 3).map((post) => (
                 <li
@@ -125,15 +125,44 @@ const Home = async () => {
           <section>
             <h2 className="text-xl font-semibold mb-8">Contato</h2>
             <p className="text-lg">
-              {`Vamos trabalhar juntos! Você pode me mandar um email ou DM em qualquer rede social.`}
+              {`Vamos trabalhar juntos! Você pode me mandar mensagem em qualquer rede social 🚀 `}
             </p>
             <div className="flex items-center mt-8 gap-3">
-              <span className="text-lg">🚀</span>
-              <p>ianaraujo15@gmail.com</p>
+              <div className="flex justify-between">
+                <ul className="flex space-x-4">
+                  <li>
+                    <a
+                      className="group transition duration-300"
+                      href="https://x.com/ianvazaraujo"
+                    >
+                      Twitter
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="group transition duration-300"
+                      href="https://github.com/ianaraujo"
+                    >
+                      Github
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="group transition duration-300"
+                      href="https://www.linkedin.com/in/ianvazaraujo/"
+                    >
+                      LinkedIn
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         </div>
-        <div className="mt-24 mb-10 flex justify-center">
+        <div className="mt-20 mb-10 flex justify-center">
           <span className="">&copy; 2024 Ian Araujo</span>
         </div>
       </div>
