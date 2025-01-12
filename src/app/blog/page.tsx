@@ -77,9 +77,9 @@ const Blog = async () => {
                         {post.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-zinc-500 mt-4">
+                    <div className="flex items-center gap-2 text-sm text-zinc-500 mt-4 mb-1">
                       <div className="flex gap-2">
-                        <span className="px-2 py-0.5 bg-zinc-200 rounded">
+                        <span className="px-2 py-1 bg-zinc-200 rounded">
                           {post.tag}
                         </span>
                       </div>
