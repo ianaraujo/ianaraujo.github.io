@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     template: "Ian Araujo | %s",
     default: "Ian Araujo",
   },
+  description: "Cientista de Dados e Desenvolvedor",
   metadataBase: new URL('https://ianaraujo.com')
 };
 
