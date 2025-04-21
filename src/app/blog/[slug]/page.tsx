@@ -112,7 +112,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <div className="mt-24 mb-10 flex justify-center">
-          <span className="">&copy; 2024 Ian Araujo</span>
+          <span className="">&copy; 2025 Ian Araujo</span>
         </div>
       </div>
     </div>

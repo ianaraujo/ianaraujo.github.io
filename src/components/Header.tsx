@@ -50,6 +50,15 @@ export function Header() {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>
             </li>
+            <li>
+              <a
+                className="group transition duration-300"
+                href="https://www.linkedin.com/in/ianvazaraujo/"
+              >
+                CV
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
+              </a>
+            </li>
           </ul>
           {/* <ul className="flex space-x-2">
               <li className="text-zinc-900">PT</li>

@@ -163,7 +163,7 @@ const Home = async () => {
           </section>
         </div>
         <div className="mt-20 mb-10 flex justify-center">
-          <span className="">&copy; 2024 Ian Araujo</span>
+          <span className="">&copy; 2025 Ian Araujo</span>
         </div>
       </div>
     </div>
