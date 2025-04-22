@@ -1,6 +1,6 @@
 ---
 title: "Fine-tuning de modelos de linguagem para previsão do sentimento no Mercado Financeiro"
-description: ""
+description: "Aprenda como usar modelos de linguagem para prever o sentimento do mercado financeiro através de relatórios mensais ou trimestrais de gestores de recursos."
 image: "/posts/credit-card-fraud/underbagging.png"
 date: "20/04/2025"
 tag: "Ciência de Dados"
@@ -97,7 +97,25 @@ A tabela abaixo mostra a quantidade de cartas coletadas de cada gestora:
 
 O texto extraído das cartas foi processado e normalizado, removendo informações irrelevantes, como tabelas, gráficos e imagens, e salvo em um banco de dados SQLite junto com outras informações, como título e data.
 
-### BERT e modelos de linguagem
+### BERT e transformers
+
+Os modelos de linguagem são uma classe de modelos de aprendizado profundo projetados para entender e gerar texto. Eles são baseados na arquitetura de *transformers*, que foi introduzida no artigo ["Attention is All You Need"](https://arxiv.org/abs/1706.03762) em 2017.
+
+
+
+Os modelos de linguagem, como o BERT (Bidirectional Encoder Representations from Transformers), são uma classe de modelos de aprendizado profundo projetados para entender e gerar texto. Eles são baseados na arquitetura de *transformers*, que foi introduzida no artigo ["Attention is All You Need"](https://arxiv.org/abs/1706.03762) em 2017.
+
+Esses modelos representam um dos prinpais avanços em processamento de linguagem natural e permitem que computadores compreendam o significado do texto de forma mais semelhante aos humanos e desempenhem tarefas, como tradução automática, resumo de texto e resposta a perguntas.
+
+Uma aplicação notória da tarefa de perguntas e resposta é o GPT, que é um modelo de linguagem treinado em uma grande quantidade de texto e capaz de gerar respostas coerentes e contextualmente relevantes para perguntas feitas em linguagem natural. Apesar de ter sido popularizado pelo ChatGPT, o modelo GPT por si só não funciona nativamente como um assistente.
+
+Após seu pré-treinamento, o modelo foi ajustado para se especializar em responder perguntas e interagir como um assistente virtual. Isso foi feito através de um processo chamado fine-tuning, onde o modelo foi exposto a um conjunto de dados específico de perguntas e respostas, permitindo que ele aprendesse a gerar respostas mais precisas e relevantes.
+
+O BERT, por outro lado, é um modelo de linguagem bidirecional que foi projetado para entender o contexto de uma palavra em uma frase, levando em consideração as palavras que vêm antes e depois dela. Isso permite que o BERT capture melhor o significado das palavras e suas relações no texto.
+
+O BERT é pré-treinado em uma grande quantidade de texto usando duas tarefas principais: a tarefa de preenchimento de lacunas (Masked Language Model) e a tarefa de previsão da próxima frase (Next Sentence Prediction). Após o pré-treinamento, o BERT pode ser ajustado para tarefas específicas, como classificação de texto, resposta a perguntas e análise de sentimentos, o que irei mostrar nesse artigo.
+
+
 
 ### Fine-tuning para adaptação de domínio
 
