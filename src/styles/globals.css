@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'highlight.js/styles/github-dark-dimmed.css';
-@import "katex/dist/katex.min.css";
+/* Import third-party CSS */
 
-.katex {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
+@import 'highlight.js/styles/atom-one-light.css';
+@import "katex/dist/katex.min.css";

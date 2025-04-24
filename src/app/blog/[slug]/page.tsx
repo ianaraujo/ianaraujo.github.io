@@ -13,8 +13,6 @@ import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 
-import 'katex/dist/katex.min.css';
-
 import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
 import { Post } from "@/types";

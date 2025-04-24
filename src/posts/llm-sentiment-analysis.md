@@ -145,6 +145,7 @@ O resultado do modelo adaptado para o domínio é muito interessante!
 
 ```python
 pipe('Tinha uma [MASK] no meio do caminho.')
+
 # [{'score': 0.14287759363651276,
 #  'sequence': '[CLS] Tinha uma pedra no meio do caminho. [SEP]',
 #  'token': 5028,
