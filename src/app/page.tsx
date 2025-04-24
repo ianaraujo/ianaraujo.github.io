@@ -6,11 +6,7 @@ import Link from "next/link";
 
 import { Header } from "@/components/Header";
 import { PostMeta } from "@/types";
-
-const parseDateString = (dateString: string): Date => {
-  const [day, month, year] = dateString.split("/").map(Number);
-  return new Date(year, month - 1, day);
-};
+import { parseDateString } from "@/utils/getPostImage";
 
 const getPosts = async (): Promise<PostMeta[]> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
@@ -24,7 +20,9 @@ const getPosts = async (): Promise<PostMeta[]> => {
     const slug = filename.replace(".md", "");
 
     return { ...data, slug } as PostMeta;
-  });
+  })
+  // Filter out posts with missing or invalid date
+  .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
 
   posts.sort((a, b) => {
     const dateA = parseDateString(a.date).getTime();

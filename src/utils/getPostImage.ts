@@ -19,3 +19,12 @@ export const getImageUrl = async (slug: string): Promise<string> => {
 
   return normalizedImagePath;
 };
+
+export const parseDateString = (dateString: string | undefined): Date => {
+  if (!dateString || typeof dateString !== "string" || !dateString.includes("/")) {
+    // Return a very old date to push invalid/missing dates to the end
+    return new Date(0);
+  }
+  const [day, month, year] = dateString.split("/").map(Number);
+  return new Date(year, month - 1, day);
+};
