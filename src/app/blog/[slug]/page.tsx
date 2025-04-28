@@ -106,7 +106,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
         <div
-          className="prose prose-zinc prose-h3:mb-[30px] prose-h3:mt-[40px] prose-img:my-10 prose-table:my-10 max-w-none"
+          className="prose prose-zinc prose-h3:mb-[30px] prose-h3:mt-[40px] marker:text-zinc-400 prose-img:my-10 prose-table:my-10 max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <div className="mt-24 mb-10 flex justify-center">

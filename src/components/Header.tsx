@@ -18,7 +18,7 @@ export function Header() {
           <Link href={"/"}>
             <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
           </Link>
-          <p className="text-zinc-500">Cientista de Dados e Desenvolvedor</p>
+          <p className="text-zinc-500">Cientista de Dados e IA</p>
         </div>
         {/* Social Media */}
         <div className="flex justify-between">
@@ -53,7 +53,7 @@ export function Header() {
             <li>
               <a
                 className="group transition duration-300"
-                href="https://www.linkedin.com/in/ianvazaraujo/"
+                href="https://drive.google.com/file/d/1i8qe0hZs5jaBA6oAchXfSnF0NT1GHm34/view?usp=sharing"
               >
                 CV
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>

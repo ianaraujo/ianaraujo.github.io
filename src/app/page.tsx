@@ -44,9 +44,8 @@ const Home = async () => {
           {/* Introducing myself */}
           <div className="">
             <p className="text-xl leading-relaxed text-justify">
-              {`👋 Olá! Meu nome é Ian, sou cientista de dados de profissão e desenvolvedor nas horas vagas. 
-              Sou um grande entusiasta de projetos que misturam inovação, dados e tecnologia. Por aqui, compartilho 
-              algumas ideias sobre a minha área e outros interesses: finanças, investimentos e empreendedorismo!`}
+              {`Meu nome é Ian Araujo. Eu sou cientista de dados de profissão e desenvolvedor nas horas vagas. 
+              Por aqui, compartilho alguns textos sobre IA, dados, tecnologia, e outros interesses: finanças, investimentos e empreendedorismo!`}
             </p>
           </div>
           {/* Experience */}
@@ -123,7 +122,7 @@ const Home = async () => {
           <section>
             <h2 className="text-xl font-semibold mb-8">Contato</h2>
             <p className="text-lg">
-              {`Vamos trabalhar juntos! Você pode me mandar mensagem em qualquer rede social 🚀 `}
+              {`Vamos trabalhar juntos! Você pode me mandar mensagem em qualquer rede social. 🚀 `}
             </p>
             <div className="flex items-center mt-8 gap-3">
               <div className="flex justify-between">
