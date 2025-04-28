@@ -396,4 +396,4 @@ Meu custo total, incluindo um certo período de aprendizado e experimentação, 
 
 Como um todo, o projeto foi muito interessante e me ensinou bastante sobre modelos de linguagem e as ferramentas do ecossistema do Hugging Face. Espero que tenha sido útil para você também!
 
-Agradeço que leu até aqui e espero que tenha gostado do artigo. Se você tiver alguma dúvida ou sugestão, fique à vontade para entrar em contato comigo através do meu [LinkedIn](https://www.linkedin.com/in/ianaraujo/) ou [Twitter](https://twitter.com/ianaraujo_).
+Agradeço quem leu até aqui e espero que tenha gostado do artigo. Se você tiver alguma dúvida ou sugestão, fique à vontade para entrar em contato comigo através do meu [LinkedIn](https://www.linkedin.com/in/ianaraujo/) ou [Twitter](https://twitter.com/ianaraujo_).
