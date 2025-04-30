@@ -1,6 +1,6 @@
 ---
 title: "Fine-tuning de modelos de linguagem para análise de sentimento no mercado financeiro"
-description: "Usando técnicas de transfer learning e PEFT para treinar modelos de linguagem para prever o sentimento do mercado financeiro a partir de cartas de gestores de recursos."
+description: "Usando técnicas de Domain-Adaptive Pretraining e PEFT para treinar modelos de linguagem para identificar o sentimento do mercado financeiro a partir de cartas de gestoras de recursos."
 image: "/posts/bert-sentiment-analysis/sentiment-score.png"
 date: "28/04/2025"
 tag: "Ciência de Dados"
