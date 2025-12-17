@@ -1,8 +1,6 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 
-import { DEFAULT_LANG } from "@/utils/i18n";
-
 export const metadata: Metadata = {
   title: {
     template: "Ian Araujo | %s",
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang={DEFAULT_LANG}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

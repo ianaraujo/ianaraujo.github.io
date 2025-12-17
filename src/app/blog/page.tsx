@@ -6,24 +6,22 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { PostMeta } from "@/types";
 import { parseDateString } from "@/utils/getPostImage";
-import { Lang } from "@/utils/i18n";
 
 const getPosts = async (): Promise<PostMeta[]> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
   const filenames = fs.readdirSync(postsDirectory);
 
-  const posts = filenames
-    .map((filename) => {
-      const filePath = path.join(postsDirectory, filename);
-      const fileContents = fs.readFileSync(filePath, "utf8");
+  const posts = filenames.map((filename) => {
+    const filePath = path.join(postsDirectory, filename);
+    const fileContents = fs.readFileSync(filePath, "utf8");
 
-      const { data } = matter(fileContents);
-      const slug = filename.replace(".md", "");
+    const { data } = matter(fileContents);
+    const slug = filename.replace(".md", "");
 
-      return { ...data, slug } as PostMeta;
-    })
-    // Filter out posts with missing or invalid date
-    .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
+    return { ...data, slug } as PostMeta;
+  })
+  // Filter out posts with missing or invalid date
+  .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
 
   posts.sort((a, b) => {
     const dateA = parseDateString(a.date).getTime();
@@ -34,8 +32,7 @@ const getPosts = async (): Promise<PostMeta[]> => {
   return posts;
 };
 
-const Blog = async ({ params }: { params: { lang: Lang } }) => {
-  const { lang } = params;
+const Blog = async () => {
   const posts = await getPosts();
 
   const postsByYear = posts.reduce((acc, post) => {
@@ -55,7 +52,7 @@ const Blog = async ({ params }: { params: { lang: Lang } }) => {
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
-        <Header lang={lang} />
+        <Header />
         <section>
           {years.map((year) => (
             <div key={year} className="mb-12">
@@ -69,7 +66,7 @@ const Blog = async ({ params }: { params: { lang: Lang } }) => {
                     className="w-full bg-zinc-50 border rounded px-5 py-3"
                   >
                     <div className="space-y-2">
-                      <Link href={`/${lang}/blog/${post.slug}`}>
+                      <Link href={`/blog/${post.slug}`}>
                         <h3 className="hover:underline text-lg">
                           {post.title}
                         </h3>

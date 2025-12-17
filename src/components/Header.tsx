@@ -1,18 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Lang } from "@/utils/i18n";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-
-type HeaderProps = {
-  lang: Lang;
-};
-
-export function Header({ lang }: HeaderProps) {
+export function Header() {
   return (
     <>
       <div className="flex flex-col space-y-5">
-        <Link href={`/${lang}`}>
+        <Link href={"/"}>
           <Image
             src="/avatar.png"
             alt="Avatar"
@@ -22,7 +15,7 @@ export function Header({ lang }: HeaderProps) {
           />
         </Link>
         <div className="space-y-1">
-          <Link href={`/${lang}`}>
+          <Link href={"/"}>
             <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
           </Link>
           <p className="text-zinc-500">Cientista de Dados e IA</p>
@@ -67,7 +60,10 @@ export function Header({ lang }: HeaderProps) {
               </a>
             </li>
           </ul>
-          <LanguageSwitcher />
+          {/* <ul className="flex space-x-2">
+              <li className="text-zinc-900">PT</li>
+              <li className="text-zinc-300">EN</li>
+            </ul> */}
         </div>
       </div>
       {/* Divider */}
