@@ -5,8 +5,10 @@ export interface PostMeta {
     image: string;
     tag: string;
     slug: string;
+    lang: string;
+    translations?: Record<string, string>;
   }
-  
+
   export interface Post extends PostMeta {
     content: string;
     readingTime: number;

@@ -1,11 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function Header() {
+type HeaderProps = {
+  lang?: string;
+};
+
+export function Header({ lang = "pt" }: HeaderProps) {
   return (
     <>
       <div className="flex flex-col space-y-5">
-        <Link href={"/"}>
+        <Link href={`/${lang}`}>
           <Image
             src="/avatar.png"
             alt="Avatar"
@@ -15,7 +19,7 @@ export function Header() {
           />
         </Link>
         <div className="space-y-1">
-          <Link href={"/"}>
+          <Link href={`/${lang}`}>
             <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
           </Link>
           <p className="text-zinc-500">Cientista de Dados e IA</p>
