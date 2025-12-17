@@ -1,6 +1,6 @@
 // src/app/blog/[slug]/page.tsx
 
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 
 import fs from "fs";
 import path from "path";
@@ -15,6 +15,7 @@ import remarkMath from "remark-math";
 
 import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
+import { DEFAULT_LOCALE, getDictionary } from "@/i18n/dictionaries";
 import { Post } from "@/types";
 
 const getPost = async (slug: string): Promise<Post> => {
@@ -65,9 +66,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: post.image,
           width: 1200,
           height: 630,
-          alt: '',
-        }
-      ]
+          alt: "",
+        },
+      ],
     },
     twitter: {
       images: [
@@ -75,24 +76,29 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: post.image,
           width: 800,
           height: 418,
-          alt: '',
-        }
-      ]
+          alt: "",
+        },
+      ],
     },
-    metadataBase: new URL('https://ianaraujo.com')
+    metadataBase: new URL("https://ianaraujo.com"),
   };
 }
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const post = await getPost(slug);
+  const lang = DEFAULT_LOCALE;
+  const dictionary = getDictionary(lang);
 
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
-        <Header />
+        <Header dictionary={dictionary.header} />
         <div className="flex flex-col space-y-5 mb-10">
-          <p className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded">
+          <p
+            className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded"
+            aria-label={`${dictionary.post.tagLabel}: ${post.tag}`}
+          >
             {post.tag}
           </p>
           <h1 className="text-4xl font-bold leading-tight">{post.title}</h1>
@@ -101,7 +107,9 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
             <span className="h-1 w-1 rounded-full bg-zinc-400"></span>
             <div className="flex items-center gap-1">
               <Clock />
-              <p>{post.readingTime} minutos</p>
+              <p>
+                {post.readingTime} {dictionary.post.readingTimeSuffix}
+              </p>
             </div>
           </div>
         </div>
@@ -110,7 +118,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <div className="mt-24 mb-10 flex justify-center">
-          <span className="">&copy; 2025 Ian Araujo</span>
+          <span className="">{dictionary.footer.copyright}</span>
         </div>
       </div>
     </div>

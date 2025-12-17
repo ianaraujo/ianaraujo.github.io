@@ -1,14 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function Header() {
+import { type Dictionary } from "@/i18n/dictionaries";
+
+type HeaderProps = {
+  dictionary: Dictionary["header"];
+};
+
+export function Header({ dictionary }: HeaderProps) {
   return (
     <>
       <div className="flex flex-col space-y-5">
         <Link href={"/"}>
           <Image
             src="/avatar.png"
-            alt="Avatar"
+            alt={dictionary.avatarAlt}
             width={64}
             height={64}
             className="rounded-full"
@@ -16,9 +22,9 @@ export function Header() {
         </Link>
         <div className="space-y-1">
           <Link href={"/"}>
-            <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
+            <h2 className="text-2xl font-semibold">{dictionary.name}</h2>
           </Link>
-          <p className="text-zinc-500">Cientista de Dados e IA</p>
+          <p className="text-zinc-500">{dictionary.role}</p>
         </div>
         {/* Social Media */}
         <div className="flex justify-between">
@@ -28,7 +34,7 @@ export function Header() {
                 className="group transition duration-300"
                 href="https://x.com/ianvazaraujo"
               >
-                Twitter
+                {dictionary.socials.twitter}
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>
             </li>
@@ -37,7 +43,7 @@ export function Header() {
                 className="group transition duration-300"
                 href="https://github.com/ianaraujo"
               >
-                Github
+                {dictionary.socials.github}
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>
             </li>
@@ -46,7 +52,7 @@ export function Header() {
                 className="group transition duration-300"
                 href="https://www.linkedin.com/in/ianvazaraujo/"
               >
-                LinkedIn
+                {dictionary.socials.linkedin}
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>
             </li>
@@ -55,15 +61,11 @@ export function Header() {
                 className="group transition duration-300"
                 href="https://drive.google.com/file/d/1i8qe0hZs5jaBA6oAchXfSnF0NT1GHm34/view?usp=sharing"
               >
-                CV
+                {dictionary.socials.cv}
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
               </a>
             </li>
           </ul>
-          {/* <ul className="flex space-x-2">
-              <li className="text-zinc-900">PT</li>
-              <li className="text-zinc-300">EN</li>
-            </ul> */}
         </div>
       </div>
       {/* Divider */}
