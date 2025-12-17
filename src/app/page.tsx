@@ -1,11 +1,9 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { DEFAULT_LANG, isSupportedLang } from "@/utils/i18n";
+import { DEFAULT_LANG } from "@/utils/i18n";
+
+export const dynamic = "force-static";
 
 export default function RootPage() {
-  const preferredLang = cookies().get("preferred-lang")?.value;
-  const lang = isSupportedLang(preferredLang) ? preferredLang : DEFAULT_LANG;
-
-  redirect(`/${lang}`);
+  redirect(`/${DEFAULT_LANG}`);
 }
