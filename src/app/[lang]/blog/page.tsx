@@ -11,17 +11,20 @@ const getPosts = async (): Promise<PostMeta[]> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
   const filenames = fs.readdirSync(postsDirectory);
 
-  const posts = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(filePath, "utf8");
+  const posts = filenames
+    .map((filename) => {
+      const filePath = path.join(postsDirectory, filename);
+      const fileContents = fs.readFileSync(filePath, "utf8");
 
-    const { data } = matter(fileContents);
-    const slug = filename.replace(".md", "");
+      const { data } = matter(fileContents);
+      const slug = filename.replace(".md", "");
 
-    return { ...data, slug } as PostMeta;
-  })
-  // Filter out posts with missing or invalid date
-  .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
+      return { ...data, slug } as PostMeta;
+    })
+    // Filter out posts with missing or invalid date
+    .filter(
+      (post) => post.date && typeof post.date === "string" && post.date.includes("/")
+    );
 
   posts.sort((a, b) => {
     const dateA = parseDateString(a.date).getTime();
@@ -32,7 +35,8 @@ const getPosts = async (): Promise<PostMeta[]> => {
   return posts;
 };
 
-const Blog = async () => {
+const Blog = async ({ params }: { params: { lang: string } }) => {
+  const { lang } = params;
   const posts = await getPosts();
 
   const postsByYear = posts.reduce((acc, post) => {
@@ -52,7 +56,7 @@ const Blog = async () => {
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
-        <Header />
+        <Header lang={lang} />
         <section>
           {years.map((year) => (
             <div key={year} className="mb-12">
@@ -66,20 +70,14 @@ const Blog = async () => {
                     className="w-full bg-zinc-50 border rounded px-5 py-3"
                   >
                     <div className="space-y-2">
-                      <Link href={`/blog/${post.slug}`}>
-                        <h3 className="hover:underline text-lg">
-                          {post.title}
-                        </h3>
+                      <Link href={`/${lang}/blog/${post.slug}`}>
+                        <h3 className="hover:underline text-lg">{post.title}</h3>
                       </Link>
-                      <p className="text-zinc-600 text-sm">
-                        {post.description}
-                      </p>
+                      <p className="text-zinc-600 text-sm">{post.description}</p>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-zinc-500 mt-4 mb-1">
                       <div className="flex gap-2">
-                        <span className="px-2 py-1 bg-zinc-200 rounded">
-                          {post.tag}
-                        </span>
+                        <span className="px-2 py-1 bg-zinc-200 rounded">{post.tag}</span>
                       </div>
                       {/* <span>{post.date}</span> */}
                     </div>
