@@ -1,6 +1,6 @@
-// src/app/blog/[slug]/page.tsx
+// src/app/[lang]/blog/[slug]/page.tsx
 
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 
 import fs from "fs";
 import path from "path";
@@ -16,6 +16,7 @@ import remarkMath from "remark-math";
 import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
 import { Post } from "@/types";
+import { Lang, SUPPORTED_LANGS } from "@/utils/i18n";
 
 const getPost = async (slug: string): Promise<Post> => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
@@ -65,9 +66,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: post.image,
           width: 1200,
           height: 630,
-          alt: '',
-        }
-      ]
+          alt: "",
+        },
+      ],
     },
     twitter: {
       images: [
@@ -75,22 +76,22 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: post.image,
           width: 800,
           height: 418,
-          alt: '',
-        }
-      ]
+          alt: "",
+        },
+      ],
     },
-    metadataBase: new URL('https://ianaraujo.com')
+    metadataBase: new URL("https://ianaraujo.com"),
   };
 }
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const PostPage = async ({ params }: { params: { lang: Lang; slug: string } }) => {
+  const { lang, slug } = params;
   const post = await getPost(slug);
 
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
-        <Header />
+        <Header lang={lang} />
         <div className="flex flex-col space-y-5 mb-10">
           <p className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded">
             {post.tag}
@@ -116,5 +117,13 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const postsDirectory = path.join(process.cwd(), "src", "posts");
+  const filenames = fs.readdirSync(postsDirectory);
+  const slugs = filenames.map((filename) => filename.replace(".md", ""));
+
+  return SUPPORTED_LANGS.flatMap((lang) => slugs.map((slug) => ({ lang, slug })));
+}
 
 export default PostPage;
