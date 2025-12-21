@@ -2,14 +2,14 @@ import Link from "next/link";
 
 import { Header } from "@/components/Header";
 import { getDictionary } from "@/i18n/dictionaries";
-import { Locale, locales } from "@/i18n/locales";
+import { getLocaleStaticParams, Locale } from "@/i18n/locales";
 import { PostMeta } from "@/types";
 import { getPostsMeta, parseDateString } from "@/utils/posts";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
+  return getLocaleStaticParams();
 }
 
 const Blog = async ({ params }: { params: { lang: Locale } }) => {
