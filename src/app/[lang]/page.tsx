@@ -7,7 +7,7 @@ import { getPostsMeta } from "@/utils/posts";
 
 export const dynamicParams = false;
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
