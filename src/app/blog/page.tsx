@@ -1,39 +1,12 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
 
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { PostMeta } from "@/types";
-import { parseDateString } from "@/utils/getPostImage";
-
-const getPosts = async (): Promise<PostMeta[]> => {
-  const postsDirectory = path.join(process.cwd(), "src", "posts");
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const posts = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-
-    const { data } = matter(fileContents);
-    const slug = filename.replace(".md", "");
-
-    return { ...data, slug } as PostMeta;
-  })
-  // Filter out posts with missing or invalid date
-  .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
-
-  posts.sort((a, b) => {
-    const dateA = parseDateString(a.date).getTime();
-    const dateB = parseDateString(b.date).getTime();
-    return dateB - dateA;
-  });
-
-  return posts;
-};
+import { getAllPosts, parseDateString } from "@/lib/posts";
 
 const Blog = async () => {
-  const posts = await getPosts();
+  const posts = getAllPosts();
 
   const postsByYear = posts.reduce((acc, post) => {
     const year = parseDateString(post.date).getFullYear();
@@ -81,7 +54,6 @@ const Blog = async () => {
                           {post.tag}
                         </span>
                       </div>
-                      {/* <span>{post.date}</span> */}
                     </div>
                   </li>
                 ))}
@@ -89,9 +61,7 @@ const Blog = async () => {
             </div>
           ))}
         </section>
-        <div className="mt-24 mb-10 flex justify-center">
-          <span className="">&copy; 2025 Ian Araujo</span>
-        </div>
+        <Footer />
       </div>
     </div>
   );

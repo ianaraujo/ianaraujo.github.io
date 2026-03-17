@@ -1,40 +1,11 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-
 import Link from "next/link";
 
 import { Header } from "@/components/Header";
-import { PostMeta } from "@/types";
-import { parseDateString } from "@/utils/getPostImage";
-
-const getPosts = async (): Promise<PostMeta[]> => {
-  const postsDirectory = path.join(process.cwd(), "src", "posts");
-  const filenames = fs.readdirSync(postsDirectory);
-
-  const posts = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-
-    const { data } = matter(fileContents);
-    const slug = filename.replace(".md", "");
-
-    return { ...data, slug } as PostMeta;
-  })
-  // Filter out posts with missing or invalid date
-  .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
-
-  posts.sort((a, b) => {
-    const dateA = parseDateString(a.date).getTime();
-    const dateB = parseDateString(b.date).getTime();
-    return dateB - dateA;
-  });
-
-  return posts;
-};
+import { Footer } from "@/components/Footer";
+import { getAllPosts } from "@/lib/posts";
 
 const Home = async () => {
-  const posts = await getPosts();
+  const posts = getAllPosts();
 
   return (
     <div className="flex justify-center w-full min-h-screen">
@@ -159,9 +130,7 @@ const Home = async () => {
             </div>
           </section>
         </div>
-        <div className="mt-20 mb-10 flex justify-center">
-          <span className="">&copy; 2025 Ian Araujo</span>
-        </div>
+        <Footer />
       </div>
     </div>
   );

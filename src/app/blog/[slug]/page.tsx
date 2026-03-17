@@ -1,60 +1,17 @@
-// src/app/blog/[slug]/page.tsx
-
-import type { Metadata } from 'next'
-
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import remarkRehype from "remark-rehype";
-import rehypeHighlight from "rehype-highlight";
-import rehypeKatex from "rehype-katex";
-import rehypeStringify from "rehype-stringify";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
+import type { Metadata } from "next";
 
 import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
-import { Post } from "@/types";
+import { Footer } from "@/components/Footer";
+import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 
-const getPost = async (slug: string): Promise<Post> => {
-  const postsDirectory = path.join(process.cwd(), "src", "posts");
-  const filePath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(filePath, "utf8");
-
-  const { data, content } = matter(fileContents);
-
-  const processedContent = await remark()
-    .use(remarkGfm)
-    .use(remarkMath)
-    .use(remarkRehype)
-    .use(rehypeHighlight)
-    .use(rehypeKatex)
-    .use(rehypeStringify)
-    .process(content);
-
-  const contentHtml = processedContent.toString();
-
-  const wordCount = content.split(/\s+/).length;
-  const readingTime = Math.ceil(wordCount / 250);
-
-  const post: Post = {
-    title: data.title,
-    date: data.date,
-    description: data.description,
-    image: data.image,
-    tag: data.tag,
-    slug,
-    content: contentHtml,
-    readingTime: readingTime,
-  };
-
-  return post;
-};
+export async function generateStaticParams() {
+  const slugs = getPostSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
-  const post = await getPost(slug);
+  const post = await getPostBySlug(params.slug);
 
   return {
     title: post.title,
@@ -65,9 +22,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: post.image,
           width: 1200,
           height: 630,
-          alt: '',
-        }
-      ]
+          alt: "",
+        },
+      ],
     },
     twitter: {
       images: [
@@ -75,17 +32,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
           url: post.image,
           width: 800,
           height: 418,
-          alt: '',
-        }
-      ]
+          alt: "",
+        },
+      ],
     },
-    metadataBase: new URL('https://ianaraujo.com')
+    metadataBase: new URL("https://ianaraujo.com"),
   };
 }
 
 const PostPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
-  const post = await getPost(slug);
+  const post = await getPostBySlug(params.slug);
 
   return (
     <div className="flex justify-center w-full min-h-screen">
@@ -109,9 +65,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
           className="prose prose-zinc prose-h3:mb-[30px] prose-h3:mt-[40px] marker:text-zinc-400 prose-img:my-10 prose-table:my-10 max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
-        <div className="mt-24 mb-10 flex justify-center">
-          <span className="">&copy; 2025 Ian Araujo</span>
-        </div>
+        <Footer />
       </div>
     </div>
   );
