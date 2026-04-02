@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is **ianaraujo.com**, a personal blog and portfolio website for Ian Araujo, a data scientist based in Brazil. The site is written primarily in **Portuguese (pt-BR)**.
+This is **ianaraujo.com**, a personal blog and portfolio website for Ian Vaz Araujo, a data scientist based in Brazil. The site supports both **Portuguese (pt-BR)** and **English (en)** via a custom i18n system. Portuguese is the primary language.
 
 ---
 
@@ -70,39 +70,80 @@ The GitHub Actions workflow (`.github/workflows/deploy.yml`):
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout (html, body, global CSS)
-│   ├── page.tsx            # Homepage (bio, experience, latest posts)
-│   └── blog/
-│       ├── page.tsx        # Blog listing page (all posts by year)
-│       └── [slug]/
-│           └── page.tsx    # Individual blog post page (includes generateStaticParams)
+│   ├── layout.tsx               # Root layout: <html lang="pt"><body>. No metadata here.
+│   ├── page.tsx                 # Root redirect: <meta http-equiv="refresh" content="0;url=/pt">
+│   └── [lang]/
+│       ├── layout.tsx           # Language-aware metadata + generateStaticParams([{lang:'pt'},{lang:'en'}])
+│       ├── page.tsx             # Homepage (bio, experience, latest posts, contact)
+│       └── blog/
+│           ├── page.tsx         # Blog listing (posts grouped by year)
+│           └── [slug]/
+│               └── page.tsx     # Individual blog post (generateStaticParams over all lang×slug combos)
 ├── components/
-│   ├── Header.tsx          # Shared header (avatar, name, social links)
-│   ├── Footer.tsx          # Shared footer (copyright with build-time year)
-│   └── Clock.tsx           # SVG clock icon for reading time
+│   ├── Header.tsx               # Shared header: name + social links + PT/EN switcher
+│   ├── Footer.tsx               # Footer with copyright year
+│   └── Clock.tsx                # SVG clock icon for reading time display
+├── i18n/
+│   ├── config.ts                # locales = ["pt","en"], defaultLocale = "pt", Lang type
+│   └── dictionaries.ts          # All UI strings for PT and EN; getDictionary(lang) function
 ├── lib/
-│   └── posts.ts            # Data access layer (getAllPosts, getPostBySlug, parseDateString)
-├── posts/                  # Markdown blog posts (content source)
-│   ├── bert-sentiment-analysis.md
-│   ├── credit-card-fraud.md
-│   ├── dual-momentum.md
-│   ├── ml-class-imbalance.md
-│   ├── ntnb-ibov-backtest.md
-│   └── pipeline-ans-databricks.md
+│   └── posts.ts                 # Data layer: getPostSlugs(lang), getAllPosts(lang), getPostBySlug(slug, lang)
+├── posts/
+│   ├── pt/                      # Portuguese markdown files (6 posts)
+│   └── en/                      # English markdown files (empty — translations added over time)
 ├── styles/
-│   └── globals.css         # Tailwind directives + highlight.js + KaTeX CSS
+│   └── globals.css              # Tailwind directives + highlight.js + KaTeX CSS imports
 └── types/
-    └── index.d.ts          # TypeScript interfaces (PostMeta, Post)
+    └── index.d.ts               # PostMeta and Post interfaces
 public/
-├── avatar.png              # Profile photo
-└── posts/                  # Blog post images organized by slug
-    ├── bert-sentiment-analysis/
-    ├── credit-card-fraud/
-    ├── dual-momentum/
-    ├── ml-class-imbalance/
-    ├── ntnb-ibov-backtest/
-    └── pipeline-ans-databricks/
+└── posts/                       # Post images organized by slug (shared across languages)
 ```
+
+---
+
+## Internationalization (i18n)
+
+This is a **custom static i18n system** — no next-intl, no i18next, no middleware. It works entirely at build time.
+
+### URL structure
+
+- Portuguese: `ianaraujo.com/pt`, `ianaraujo.com/pt/blog`, `ianaraujo.com/pt/blog/<slug>`
+- English: `ianaraujo.com/en`, `ianaraujo.com/en/blog`, `ianaraujo.com/en/blog/<slug>`
+- Root `/` redirects to `/pt` via meta refresh
+
+### How pages receive the language
+
+Every page under `src/app/[lang]/` receives `params.lang` (type `Lang = "pt" | "en"`). Pages call `getDictionary(lang)` to get their UI strings and pass `lang` down to `<Header>` and `<Footer>` as a prop.
+
+### UI strings
+
+All translatable UI strings are in **`src/i18n/dictionaries.ts`**. Structure:
+
+```ts
+{
+  meta: { description },
+  home: { bio, experience, latestPosts, contact, contactText, viewAll, current },
+  jobs: [{ title, company }],   // experience timeline; first entry is always "current"
+  blog: { minutes },
+}
+```
+
+To change any UI text, edit the relevant key in both `pt` and `en` blocks. **Never hardcode Portuguese or English strings directly in page/component files.**
+
+### Blog posts
+
+Posts are language-specific Markdown files. Same slug in both folders = same URL pattern in both languages. If a slug exists only in `pt/`, it won't appear on the EN site.
+
+```
+src/posts/pt/my-post.md   ← appears at /pt/blog/my-post
+src/posts/en/my-post.md   ← appears at /en/blog/my-post (add when translated)
+```
+
+The `generateStaticParams` in `[lang]/blog/[slug]/page.tsx` iterates all locales and their slugs to produce the cartesian product of valid paths.
+
+### Language switcher
+
+`Header.tsx` receives `lang` and an optional `currentPath` (e.g. `"/blog/some-slug"`). It constructs switcher links as `/${otherLang}${currentPath}`. Pages pass `currentPath` as the path segment after the lang prefix.
 
 ---
 
@@ -110,8 +151,8 @@ public/
 
 ### Adding a new blog post
 
-1. Create a new `.md` file in `src/posts/` (the filename becomes the URL slug)
-2. Add frontmatter with these required fields:
+1. Create `src/posts/pt/<slug>.md` (and optionally `src/posts/en/<slug>.md` for the translation)
+2. Required frontmatter:
    ```yaml
    ---
    title: "Post Title"
@@ -121,38 +162,50 @@ public/
    tag: "Category Name"
    ---
    ```
-3. Place any images in `public/posts/<slug>/`
-4. The post will automatically appear on the homepage (latest 3) and the blog listing page
+3. Place images in `public/posts/<slug>/`
+4. Post appears automatically in listings and (if latest 3) on the homepage
+
+### Changing UI text / section headings
+
+Edit `src/i18n/dictionaries.ts`. Update both `pt` and `en` blocks.
+
+### Changing experience entries
+
+Edit the `jobs` array in both `pt` and `en` blocks of `src/i18n/dictionaries.ts`. The first entry is rendered as the current position.
+
+### Adding a new homepage section
+
+1. Add the section label to `dictionaries.ts` under `home` for both languages
+2. Add the section JSX to `src/app/[lang]/page.tsx` using the dictionary value
+3. Follow the existing pattern: `<h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-6">{dict.home.newSection}</h2>`
 
 ### Date format
 
-Dates use **DD/MM/YYYY** format (Brazilian convention). The `parseDateString()` utility in `src/utils/getPostImage.ts` handles parsing.
+Dates use **DD/MM/YYYY** format. Parsed by `parseDateString()` in `src/lib/posts.ts`.
 
 ### Markdown processing pipeline
 
-Content goes through this pipeline (see `src/app/blog/[slug]/page.tsx`):
+Content goes through this pipeline (see `src/app/[lang]/blog/[slug]/page.tsx`):
 1. `gray-matter` — extracts frontmatter metadata
-2. `remark` — parses Markdown to MDAST
-3. `remark-gfm` — GitHub Flavored Markdown (tables, strikethrough, etc.)
-4. `remark-math` — LaTeX math blocks (`$$...$$` and `$...$`)
-5. `remark-rehype` — converts MDAST to HAST
-6. `rehype-highlight` — syntax highlighting for code blocks
-7. `rehype-katex` — renders math to KaTeX HTML
-8. `rehype-stringify` — serializes HAST to HTML string
+2. `remark` → `remark-gfm` — GitHub Flavored Markdown
+3. `remark-math` — LaTeX math blocks (`$$...$$` and `$...$`)
+4. `remark-rehype` → `rehype-highlight` — syntax highlighting
+5. `rehype-katex` — renders math to KaTeX HTML
+6. `rehype-stringify` — final HTML string
 
-The rendered HTML is injected via `dangerouslySetInnerHTML` and styled with Tailwind's `prose` classes.
+Rendered via `dangerouslySetInnerHTML` styled with Tailwind `prose` classes.
 
 ---
 
 ## Design Patterns
 
-- **Minimal, clean aesthetic:** zinc color palette, generous whitespace, no heavy UI frameworks
-- **Typography-first:** relies on `@tailwindcss/typography` prose classes for blog content
-- **Component reuse:** shared `Header` component across all pages
-- **Static generation everywhere:** all data (posts) is read from the filesystem at build time using `fs.readFileSync`
+- **Minimal, clean aesthetic:** zinc color palette, generous whitespace
+- **Section headings:** `text-base font-semibold uppercase tracking-wider text-zinc-400`
+- **Post cards:** `border border-zinc-200 rounded-md px-5 py-4 hover:bg-zinc-50 transition-colors`
+- **Link hover animation:** sliding underline via `group`/`max-w-0 → max-w-full` pattern
+- **Typography-first:** `@tailwindcss/typography` prose classes for blog content
+- **No external CMS:** all content lives in the repo as Markdown files
 - **Path aliases:** `@/*` maps to `./src/*` (configured in tsconfig.json)
-- **No basePath:** the site is served from the root domain (ianaraujo.com), not a subpath, so no `basePath` is set in next.config.mjs
-- **No external CMS:** content lives in the repo as Markdown files
 
 ---
 
@@ -161,7 +214,7 @@ The rendered HTML is injected via `dangerouslySetInnerHTML` and styled with Tail
 | File | Purpose |
 |------|---------|
 | `next.config.mjs` | Static export config, unoptimized images |
-| `tailwind.config.ts` | Content paths, typography plugin customization |
+| `tailwind.config.ts` | Content paths, typography plugin customization (code blocks, KaTeX) |
 | `postcss.config.mjs` | PostCSS with Tailwind plugin |
 | `tsconfig.json` | TypeScript config with `@/*` path alias |
 | `.eslintrc.json` | ESLint with next/core-web-vitals |
@@ -174,7 +227,7 @@ The rendered HTML is injected via `dangerouslySetInnerHTML` and styled with Tail
 ### Run locally
 ```bash
 npm install
-npm run dev        # http://localhost:3000
+npm run dev        # http://localhost:3000  (redirects to /pt)
 ```
 
 ### Build (same as deploy)
@@ -184,5 +237,12 @@ npm run build      # Produces ./out directory
 
 ### Test the static export locally
 ```bash
-npx serve out      # Serves the built static site
+npx serve out
 ```
+
+### Add a third language
+
+1. Add the locale to `src/i18n/config.ts`: `export const locales = ["pt", "en", "es"] as const;`
+2. Add a matching dictionary block in `src/i18n/dictionaries.ts`
+3. Create `src/posts/es/` for content
+4. `generateStaticParams` in all `[lang]` routes will automatically pick it up

@@ -10,8 +10,11 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 
 import { Post, PostMeta } from "@/types";
+import { Lang } from "@/i18n/config";
 
-const POSTS_DIRECTORY = path.join(process.cwd(), "src", "posts");
+function getPostsDirectory(lang: Lang): string {
+  return path.join(process.cwd(), "src", "posts", lang);
+}
 
 export function parseDateString(dateString: string | undefined): Date {
   if (!dateString || typeof dateString !== "string" || !dateString.includes("/")) {
@@ -21,17 +24,23 @@ export function parseDateString(dateString: string | undefined): Date {
   return new Date(year, month - 1, day);
 }
 
-export function getPostSlugs(): string[] {
-  const filenames = fs.readdirSync(POSTS_DIRECTORY);
-  return filenames.map((filename) => filename.replace(".md", ""));
+export function getPostSlugs(lang: Lang): string[] {
+  const dir = getPostsDirectory(lang);
+  if (!fs.existsSync(dir)) return [];
+  const filenames = fs.readdirSync(dir);
+  return filenames
+    .filter((f) => f.endsWith(".md"))
+    .map((filename) => filename.replace(".md", ""));
 }
 
-export function getAllPosts(): PostMeta[] {
-  const filenames = fs.readdirSync(POSTS_DIRECTORY);
+export function getAllPosts(lang: Lang): PostMeta[] {
+  const dir = getPostsDirectory(lang);
+  if (!fs.existsSync(dir)) return [];
+  const filenames = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
 
   const posts = filenames
     .map((filename) => {
-      const filePath = path.join(POSTS_DIRECTORY, filename);
+      const filePath = path.join(dir, filename);
       const fileContents = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContents);
       const slug = filename.replace(".md", "");
@@ -49,8 +58,9 @@ export function getAllPosts(): PostMeta[] {
   return posts;
 }
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-  const filePath = path.join(POSTS_DIRECTORY, `${slug}.md`);
+export async function getPostBySlug(slug: string, lang: Lang): Promise<Post> {
+  const dir = getPostsDirectory(lang);
+  const filePath = path.join(dir, `${slug}.md`);
   const fileContents = fs.readFileSync(filePath, "utf8");
 
   const { data, content } = matter(fileContents);

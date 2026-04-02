@@ -4,9 +4,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PostMeta } from "@/types";
 import { getAllPosts, parseDateString } from "@/lib/posts";
+import { Lang } from "@/i18n/config";
 
-const Blog = async () => {
-  const posts = getAllPosts();
+
+const Blog = async ({ params }: { params: { lang: Lang } }) => {
+  const { lang } = params;
+  const posts = getAllPosts(lang);
 
   const postsByYear = posts.reduce((acc, post) => {
     const year = parseDateString(post.date).getFullYear();
@@ -25,8 +28,13 @@ const Blog = async () => {
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
-        <Header />
+        <Header lang={lang} currentPath="/blog" />
         <section>
+          {years.length === 0 && (
+            <p className="text-zinc-500">
+              {lang === "en" ? "No posts available yet." : "Nenhuma publicação disponível."}
+            </p>
+          )}
           {years.map((year) => (
             <div key={year} className="mb-12">
               {year !== currentYear && (
@@ -39,7 +47,7 @@ const Blog = async () => {
                     className="w-full border border-zinc-200 rounded-md px-5 py-4 hover:bg-zinc-50 transition-colors"
                   >
                     <div className="space-y-1">
-                      <Link href={`/blog/${post.slug}`}>
+                      <Link href={`/${lang}/blog/${post.slug}`}>
                         <h3 className="font-medium hover:underline">
                           {post.title}
                         </h3>

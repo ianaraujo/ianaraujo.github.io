@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Lang } from "@/i18n/config";
 
 const navLinks = [
   { label: "Twitter", href: "https://x.com/ianvazaraujo" },
@@ -10,16 +11,21 @@ const navLinks = [
   },
 ];
 
-export function Header() {
+type HeaderProps = {
+  lang: Lang;
+  currentPath?: string;
+};
+
+export function Header({ lang, currentPath = "" }: HeaderProps) {
   return (
     <>
       <div className="flex items-center justify-between py-6">
         <div>
-          <Link href={"/"}>
+          <Link href={`/${lang}`}>
             <h1 className="text-xl font-semibold tracking-tight">Ian Vaz Araujo</h1>
           </Link>
         </div>
-        <nav>
+        <nav className="flex items-center gap-5">
           <ul className="flex space-x-5 text-sm text-zinc-700">
             {navLinks.map(({ label, href }) => (
               <li key={label}>
@@ -30,6 +36,21 @@ export function Header() {
               </li>
             ))}
           </ul>
+          <span className="text-zinc-200">|</span>
+          <div className="flex gap-2 text-sm">
+            <Link
+              href={`/pt${currentPath}`}
+              className={lang === "pt" ? "font-semibold text-zinc-900" : "text-zinc-400 hover:text-zinc-600 transition-colors"}
+            >
+              PT
+            </Link>
+            <Link
+              href={`/en${currentPath}`}
+              className={lang === "en" ? "font-semibold text-zinc-900" : "text-zinc-400 hover:text-zinc-600 transition-colors"}
+            >
+              EN
+            </Link>
+          </div>
         </nav>
       </div>
       <div className="w-full bg-zinc-200 h-px mb-10"></div>

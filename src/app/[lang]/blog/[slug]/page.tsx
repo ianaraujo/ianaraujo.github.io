@@ -4,14 +4,22 @@ import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
+import { locales, Lang } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
-  return slugs.map((slug) => ({ slug }));
+  const params: { lang: string; slug: string }[] = [];
+  for (const lang of locales) {
+    const slugs = getPostSlugs(lang);
+    for (const slug of slugs) {
+      params.push({ lang, slug });
+    }
+  }
+  return params;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+export async function generateMetadata({ params }: { params: { lang: Lang; slug: string } }): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug, params.lang);
 
   return {
     title: post.title,
@@ -40,13 +48,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
-  const post = await getPostBySlug(params.slug);
+const PostPage = async ({ params }: { params: { lang: Lang; slug: string } }) => {
+  const { lang, slug } = params;
+  const dict = getDictionary(lang);
+  const post = await getPostBySlug(slug, lang);
 
   return (
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
-        <Header />
+        <Header lang={lang} currentPath={`/blog/${slug}`} />
         <div className="flex flex-col space-y-5 mb-10">
           <p className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded">
             {post.tag}
@@ -57,7 +67,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
             <span className="h-1 w-1 rounded-full bg-zinc-400"></span>
             <div className="flex items-center gap-1">
               <Clock />
-              <p>{post.readingTime} minutos</p>
+              <p>{post.readingTime} {dict.blog.minutes}</p>
             </div>
           </div>
         </div>

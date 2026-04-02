@@ -1,0 +1,3 @@
+export const locales = ["pt", "en"] as const;
+export const defaultLocale = "pt";
+export type Lang = (typeof locales)[number];
