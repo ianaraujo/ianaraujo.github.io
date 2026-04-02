@@ -45,7 +45,7 @@ const PostPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
+      <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
         <Header />
         <div className="flex flex-col space-y-5 mb-10">
           <p className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded">

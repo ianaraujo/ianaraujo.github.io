@@ -24,36 +24,34 @@ const Blog = async () => {
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-10 w-full max-w-screen-md px-8 md:px-0">
+      <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
         <Header />
         <section>
           {years.map((year) => (
             <div key={year} className="mb-12">
               {year !== currentYear && (
-                <h3 className="text-2xl font-semibold mb-8">{year}</h3>
+                <h3 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-6">{year}</h3>
               )}
-              <ul className="space-y-6">
+              <ul className="space-y-3">
                 {postsByYear[year].map((post) => (
                   <li
                     key={post.slug}
-                    className="w-full bg-zinc-50 border rounded px-5 py-3"
+                    className="w-full border border-zinc-200 rounded-md px-5 py-4 hover:bg-zinc-50 transition-colors"
                   >
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                       <Link href={`/blog/${post.slug}`}>
-                        <h3 className="hover:underline text-lg">
+                        <h3 className="font-medium hover:underline">
                           {post.title}
                         </h3>
                       </Link>
-                      <p className="text-zinc-600 text-sm">
+                      <p className="text-zinc-500 text-sm">
                         {post.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-zinc-500 mt-4 mb-1">
-                      <div className="flex gap-2">
-                        <span className="px-2 py-1 bg-zinc-200 rounded">
-                          {post.tag}
-                        </span>
-                      </div>
+                    <div className="mt-3">
+                      <span className="text-xs px-2 py-0.5 bg-zinc-100 text-zinc-500 rounded">
+                        {post.tag}
+                      </span>
                     </div>
                   </li>
                 ))}

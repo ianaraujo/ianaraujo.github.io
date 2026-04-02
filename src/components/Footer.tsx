@@ -3,7 +3,7 @@ export function Footer() {
 
   return (
     <div className="mt-24 mb-10 flex justify-center">
-      <span>&copy; {year} Ian Araujo</span>
+      <span>&copy; {year} Ian Vaz Araujo</span>
     </div>
   );
 }

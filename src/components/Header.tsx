@@ -1,75 +1,38 @@
-import Image from "next/image";
 import Link from "next/link";
+
+const navLinks = [
+  { label: "Twitter", href: "https://x.com/ianvazaraujo" },
+  { label: "Github", href: "https://github.com/ianaraujo" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/ianvazaraujo/" },
+  {
+    label: "CV",
+    href: "https://drive.google.com/file/d/1i8qe0hZs5jaBA6oAchXfSnF0NT1GHm34/view?usp=sharing",
+  },
+];
 
 export function Header() {
   return (
     <>
-      <div className="flex flex-col space-y-5">
-        <Link href={"/"}>
-          <Image
-            src="/avatar.png"
-            alt="Avatar"
-            width={64}
-            height={64}
-            className="rounded-full"
-          />
-        </Link>
-        <div className="space-y-1">
+      <div className="flex items-center justify-between py-6">
+        <div>
           <Link href={"/"}>
-            <h2 className="text-2xl font-semibold">Ian Vaz Araujo</h2>
+            <h1 className="text-xl font-semibold tracking-tight">Ian Vaz Araujo</h1>
           </Link>
-          <p className="text-zinc-500">Cientista de Dados e IA</p>
         </div>
-        {/* Social Media */}
-        <div className="flex justify-between">
-          <ul className="flex space-x-4">
-            <li>
-              <a
-                className="group transition duration-300"
-                href="https://x.com/ianvazaraujo"
-              >
-                Twitter
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="group transition duration-300"
-                href="https://github.com/ianaraujo"
-              >
-                Github
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="group transition duration-300"
-                href="https://www.linkedin.com/in/ianvazaraujo/"
-              >
-                LinkedIn
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="group transition duration-300"
-                href="https://drive.google.com/file/d/1i8qe0hZs5jaBA6oAchXfSnF0NT1GHm34/view?usp=sharing"
-              >
-                CV
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[2px] bg-zinc-600"></span>
-              </a>
-            </li>
+        <nav>
+          <ul className="flex space-x-5 text-sm text-zinc-700">
+            {navLinks.map(({ label, href }) => (
+              <li key={label}>
+                <a className="group transition duration-300" href={href}>
+                  {label}
+                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[1.5px] bg-zinc-700"></span>
+                </a>
+              </li>
+            ))}
           </ul>
-          {/* <ul className="flex space-x-2">
-              <li className="text-zinc-900">PT</li>
-              <li className="text-zinc-300">EN</li>
-            </ul> */}
-        </div>
+        </nav>
       </div>
-      {/* Divider */}
-      <div className="py-8">
-        <div className="w-full bg-zinc-200 h-[1px]"></div>
-      </div>
+      <div className="w-full bg-zinc-200 h-px mb-10"></div>
     </>
   );
 }

@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: "Ian Araujo | %s",
-    default: "Ian Araujo",
+    template: "Ian Vaz Araujo | %s",
+    default: "Ian Vaz Araujo",
   },
   description: "Cientista de Dados e IA",
   metadataBase: new URL('https://ianaraujo.com')
