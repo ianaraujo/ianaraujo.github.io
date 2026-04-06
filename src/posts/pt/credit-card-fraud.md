@@ -4,6 +4,7 @@ description: "Desenvolvimento de um modelo de detecção de fraudes em cartões 
 image: "/posts/credit-card-fraud/underbagging.png"
 date: "13/01/2025"
 tag: "Ciência de Dados"
+type: "project"
 ---
 
 Imagine a seguinte situação. Você acorda de manhã e decide ir até a padaria tomar café da manhã. Ao terminar de comer, se dirige ao caixa para pagar, desbloqueia o telefone para pagar por aproximação usando uma carteira digital, mas sua compra é negada.

@@ -4,6 +4,7 @@ description: "Em cenários de juros altos, que são comuns no Brasil, os investi
 image: "/posts/ntnb-ibov-backtest/avg-return-eval.png"
 date: "21/10/2024"
 tag: "Investimentos"
+type: "essay"
 ---
 
 ![Taxas do Tesouro IPCA+](/posts/ntnb-ibov-backtest/taxa-ipca-tesouro.png)

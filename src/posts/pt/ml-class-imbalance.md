@@ -4,6 +4,7 @@ description: "Explorando técnicas para treinar modelos preditivos em dados desb
 image: "/posts/ml-class-imbalance/smote.png"
 date: "25/11/2024"
 tag: "Ciência de Dados"
+type: "essay"
 ---
 
 Em alguns casos específicos de modelagem preditiva, lidamos com um problema conhecido como “classes desbalanceadas”. Isso acontece quando queremos classificar determinado exemplo, seja em tarefas binárias ou de múltiplas classes, mas os dados de treinamento específicos não apresentam uma distribuição equilibrada dessas classes.

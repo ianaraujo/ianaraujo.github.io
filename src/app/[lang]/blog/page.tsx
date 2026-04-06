@@ -3,15 +3,15 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PostMeta } from "@/types";
-import { getAllPosts, parseDateString } from "@/lib/posts";
+import { getAllEssays, parseDateString } from "@/lib/posts";
 import { Lang } from "@/i18n/config";
 
 
 const Blog = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = params;
-  const posts = getAllPosts(lang);
+  const essays = getAllEssays(lang);
 
-  const postsByYear = posts.reduce((acc, post) => {
+  const essaysByYear = essays.reduce((acc, post) => {
     const year = parseDateString(post.date).getFullYear();
     if (!acc[year]) {
       acc[year] = [];
@@ -21,7 +21,7 @@ const Blog = async ({ params }: { params: { lang: Lang } }) => {
   }, {} as { [year: number]: PostMeta[] });
 
   const currentYear = new Date().getFullYear();
-  const years = Object.keys(postsByYear)
+  const years = Object.keys(essaysByYear)
     .map(Number)
     .sort((a, b) => b - a);
 
@@ -32,35 +32,25 @@ const Blog = async ({ params }: { params: { lang: Lang } }) => {
         <section>
           {years.length === 0 && (
             <p className="text-zinc-500">
-              {lang === "en" ? "No posts available yet." : "Nenhuma publicação disponível."}
+              {lang === "en" ? "No essays available yet." : "Nenhum essay disponível."}
             </p>
           )}
           {years.map((year) => (
-            <div key={year} className="mb-12">
+            <div key={year} className="mb-10">
               {year !== currentYear && (
-                <h3 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-6">{year}</h3>
+                <h3 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-4">{year}</h3>
               )}
               <ul className="space-y-3">
-                {postsByYear[year].map((post) => (
-                  <li
-                    key={post.slug}
-                    className="w-full border border-zinc-200 rounded-md px-5 py-4 hover:bg-zinc-50 transition-colors"
-                  >
-                    <div className="space-y-1">
-                      <Link href={`/${lang}/blog/${post.slug}`}>
-                        <h3 className="font-medium hover:underline">
-                          {post.title}
-                        </h3>
-                      </Link>
-                      <p className="text-zinc-500 text-sm">
-                        {post.description}
-                      </p>
-                    </div>
-                    <div className="mt-3">
-                      <span className="text-xs px-2 py-0.5 bg-zinc-100 text-zinc-500 rounded">
-                        {post.tag}
+                {essaysByYear[year].map((post) => (
+                  <li key={post.slug} className="flex items-baseline justify-between gap-4">
+                    <Link href={`/${lang}/blog/${post.slug}`} className="group text-zinc-800">
+                      <span className="underline underline-offset-2 decoration-zinc-300 group-hover:decoration-zinc-700 transition-colors">
+                        {post.title}
                       </span>
-                    </div>
+                    </Link>
+                    <span className="text-sm text-zinc-400 shrink-0">
+                      {parseDateString(post.date).toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", { day: "2-digit", month: "short", year: "numeric" })}
+                    </span>
                   </li>
                 ))}
               </ul>

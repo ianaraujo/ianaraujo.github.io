@@ -4,6 +4,7 @@ date: "10/07/2024"
 description: "O projeto utiliza dados abertos de planos de saúde na plataforma do Databricks, aplicando conhecimentos em processamento distribuído, modelagem de dados e arquitetura Apache Spark, e Metabase como ferramenta de BI"
 image: "/posts/pipeline-ans-databricks/overview-projeto.png"
 tag: "Engenharia de Dados"
+type: "project"
 ---
 
 ![Overview do Projeto](/posts/pipeline-ans-databricks/overview-projeto.png)

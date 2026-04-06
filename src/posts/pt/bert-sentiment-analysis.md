@@ -4,6 +4,7 @@ description: "Usando técnicas de Domain-Adaptive Pretraining e PEFT para treina
 image: "/posts/bert-sentiment-analysis/sentiment-score.png"
 date: "28/04/2025"
 tag: "Ciência de Dados"
+type: "project"
 ---
 
 Nos mercados e na vida, grande parte das decisões ditas racionais são motivadas, na verdade, por fatores psicológicos e comportamentais ocultos. Reconhecer o efeito das emoções sob a tomada de decisão é um fator crucial, que separa bons investidores de investidores excelentes.

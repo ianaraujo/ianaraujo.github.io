@@ -45,7 +45,7 @@ export function getAllPosts(lang: Lang): PostMeta[] {
       const { data } = matter(fileContents);
       const slug = filename.replace(".md", "");
 
-      return { ...data, slug } as PostMeta;
+      return { ...data, slug, type: data.type ?? "project" } as PostMeta;
     })
     .filter((post) => post.date && typeof post.date === "string" && post.date.includes("/"));
 
@@ -56,6 +56,14 @@ export function getAllPosts(lang: Lang): PostMeta[] {
   });
 
   return posts;
+}
+
+export function getAllProjects(lang: Lang): PostMeta[] {
+  return getAllPosts(lang).filter((p) => p.type === "project");
+}
+
+export function getAllEssays(lang: Lang): PostMeta[] {
+  return getAllPosts(lang).filter((p) => p.type === "essay");
 }
 
 export async function getPostBySlug(slug: string, lang: Lang): Promise<Post> {
@@ -85,6 +93,7 @@ export async function getPostBySlug(slug: string, lang: Lang): Promise<Post> {
     description: data.description,
     image: data.image,
     tag: data.tag,
+    type: data.type ?? "project",
     slug,
     content: contentHtml,
     readingTime,

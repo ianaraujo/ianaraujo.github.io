@@ -5,6 +5,7 @@ export interface PostMeta {
     image: string;
     tag: string;
     slug: string;
+    type: "project" | "essay";
   }
   
   export interface Post extends PostMeta {

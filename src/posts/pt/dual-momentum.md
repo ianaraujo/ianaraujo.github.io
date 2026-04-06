@@ -4,6 +4,7 @@ description: "Utilizando técnicas de backtest e Python, esse estudo analisa uma
 image: "/posts/dual-momentum/momentum-shifts.png"
 date: "10/10/2024"
 tag: "Investimentos"
+type: "project"
 ---
 
 As estratégias de **momentum** baseiam-se na ideia que ativos com retornos positivos tendem a continuar se valorizando, enquanto aqueles com retornos fracos ou negativos geralmente mantêm a mesma trajetória.

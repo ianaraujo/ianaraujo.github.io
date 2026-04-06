@@ -2,14 +2,15 @@ import Link from "next/link";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { getAllPosts } from "@/lib/posts";
+import { getAllProjects, getAllEssays, parseDateString } from "@/lib/posts";
 import { Lang } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
 const Home = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = params;
   const dict = getDictionary(lang);
-  const posts = getAllPosts(lang);
+  const projects = getAllProjects(lang);
+  const essays = getAllEssays(lang);
 
   return (
     <div className="flex justify-center w-full min-h-screen">
@@ -49,12 +50,14 @@ const Home = async ({ params }: { params: { lang: Lang } }) => {
               </div>
             </div>
           </section>
-          {/* Latest Posts */}
-          {posts.length > 0 && (
+          {/* Projects */}
+          {projects.length > 0 && (
             <section>
-              <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-6">{dict.home.latestPosts}</h2>
+              <Link href={`/${lang}/projects`}>
+                <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 hover:text-zinc-600 transition-colors mb-6">{dict.home.latestProjects}</h2>
+              </Link>
               <ul className="space-y-3">
-                {posts.slice(0, 3).map((post) => (
+                {projects.slice(0, 3).map((post) => (
                   <li
                     key={post.slug}
                     className="w-full border border-zinc-200 rounded-md px-5 py-4 space-y-1 hover:bg-zinc-50 transition-colors"
@@ -66,14 +69,28 @@ const Home = async ({ params }: { params: { lang: Lang } }) => {
                   </li>
                 ))}
               </ul>
-              {posts.length > 3 && (
-                <div className="mt-3">
-                  <Link href={`/${lang}/blog`} className="inline-block group text-sm text-zinc-700 transition duration-300">
-                    {dict.home.viewAll}
-                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-[1.5px] bg-zinc-700"></span>
-                  </Link>
-                </div>
-              )}
+            </section>
+          )}
+          {/* Essays */}
+          {essays.length > 0 && (
+            <section>
+              <Link href={`/${lang}/blog`}>
+                <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 hover:text-zinc-600 transition-colors mb-6">{dict.home.latestEssays}</h2>
+              </Link>
+              <ul className="space-y-2">
+                {essays.slice(0, 5).map((post) => (
+                  <li key={post.slug} className="flex items-baseline justify-between gap-4">
+                    <Link href={`/${lang}/blog/${post.slug}`} className="group text-zinc-800">
+                      <span className="underline underline-offset-2 decoration-zinc-300 group-hover:decoration-zinc-700 transition-colors font-medium">
+                        {post.title}
+                      </span>
+                    </Link>
+                    <span className="text-sm text-zinc-400 shrink-0">
+                      {parseDateString(post.date).toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", { month: "short", year: "numeric" })}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
           <section>
