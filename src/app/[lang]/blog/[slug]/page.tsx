@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 import { Clock } from "@/components/Clock";
 import { Header } from "@/components/Header";
@@ -21,10 +22,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { lang: Lang; slug: string } }): Promise<Metadata> {
   const post = await getPostBySlug(params.slug, params.lang);
 
+  const available = locales.filter(locale => getPostSlugs(locale).includes(params.slug));
+  const base = pageMetadata(params.lang, `/blog/${params.slug}`, post.title, post.description, available);
   return {
-    title: post.title,
-    description: post.description,
+    ...base,
     openGraph: {
+      ...base.openGraph,
+      type: "article",
       images: [
         {
           url: post.image,
@@ -35,6 +39,7 @@ export async function generateMetadata({ params }: { params: { lang: Lang; slug:
       ],
     },
     twitter: {
+      ...base.twitter,
       images: [
         {
           url: post.image,
@@ -55,7 +60,7 @@ const PostPage = async ({ params }: { params: { lang: Lang; slug: string } }) =>
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
+      <div className="mt-6 w-full max-w-screen-md px-6 md:px-8">
         <Header lang={lang} currentPath={`/blog/${slug}`} />
         <div className="flex flex-col space-y-5 mb-10">
           <p className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded">

@@ -35,7 +35,7 @@ Os dados de treinamento do Kaggle estão divididos em dois arquivos .csv. O prim
 
 A variável target, ou seja, que queremos prever é `isFraud` (0 ou 1) tratando-se de um problema de classificação binária. Em nosso conjunto de dados, a classe positiva (isFraud = 1) representa apenas 3,5% do conjunto total de treinamento. Portanto, temos diante de nós um problema com classes desbalanceadas.
 
-Em meu último artigo, escrevi sobre os ["Desafios na construção de classificadores robustos em conjuntos de dados desbalanceados"](https://ianaraujo.com/blog/ml-class-imbalance). Apresentei algumas técnicas para lidar com esse tipo de problemas em tarefas de ML, como reamostragrem, ajustes nos pesos das classes e o bom uso das métricas de avaliação.
+Em meu último artigo, escrevi sobre os ["Desafios na construção de classificadores robustos em conjuntos de dados desbalanceados"](https://ianaraujo.com/pt/blog/ml-class-imbalance). Apresentei algumas técnicas para lidar com esse tipo de problemas em tarefas de ML, como reamostragrem, ajustes nos pesos das classes e o bom uso das métricas de avaliação.
 
 Quando há desbalanceamento de classes é fundamental conhecer as principais técnicas para lidar com esse problema de forma eficiente.
 
