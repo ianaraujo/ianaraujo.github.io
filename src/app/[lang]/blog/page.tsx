@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { getDictionary } from "@/i18n/dictionaries";
+import { pageMetadata } from "@/lib/seo";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,8 +9,14 @@ import { getAllEssays, parseDateString } from "@/lib/posts";
 import { Lang } from "@/i18n/config";
 
 
+export function generateMetadata({ params }: { params: { lang: Lang } }) {
+  const dict = getDictionary(params.lang);
+  return pageMetadata(params.lang, "/blog", dict.home.latestEssays, dict.meta.blogDescription);
+}
+
 const Blog = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = params;
+  const dict = getDictionary(lang);
   const essays = getAllEssays(lang);
 
   const essaysByYear = essays.reduce((acc, post) => {
@@ -27,12 +35,13 @@ const Blog = async ({ params }: { params: { lang: Lang } }) => {
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
+      <div className="mt-6 w-full max-w-screen-md px-6 md:px-8">
         <Header lang={lang} currentPath="/blog" />
-        <section>
+        <main>
+          <h1 className="text-3xl font-semibold tracking-tight mb-6">{dict.home.latestEssays}</h1>
           {years.length === 0 && (
             <p className="text-zinc-500">
-              {lang === "en" ? "No essays available yet." : "Nenhum essay disponível."}
+              {dict.blog.empty}
             </p>
           )}
           {years.map((year) => (
@@ -56,7 +65,7 @@ const Blog = async ({ params }: { params: { lang: Lang } }) => {
               </ul>
             </div>
           ))}
-        </section>
+        </main>
         <Footer />
       </div>
     </div>

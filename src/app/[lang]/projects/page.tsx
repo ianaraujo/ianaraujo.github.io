@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
+import { getDictionary } from "@/i18n/dictionaries";
+import { pageMetadata } from "@/lib/seo";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,8 +10,14 @@ import { getAllProjects, parseDateString } from "@/lib/posts";
 import { Lang } from "@/i18n/config";
 
 
+export function generateMetadata({ params }: { params: { lang: Lang } }) {
+  const dict = getDictionary(params.lang);
+  return pageMetadata(params.lang, "/projects", dict.home.latestProjects, dict.meta.projectsDescription);
+}
+
 const Projects = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = params;
+  const dict = getDictionary(lang);
   const projects = getAllProjects(lang);
 
   const projectsByYear = projects.reduce((acc, post) => {
@@ -27,12 +36,14 @@ const Projects = async ({ params }: { params: { lang: Lang } }) => {
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
+      <div className="mt-6 w-full max-w-screen-md px-6 md:px-8">
         <Header lang={lang} currentPath="/projects" />
-        <section>
-          {years.length === 0 && (
+        <main>
+          <h1 className="text-3xl font-semibold tracking-tight mb-6">{dict.home.latestProjects}</h1>
+          {lang === "en" && <FeaturedProjects lang={lang} />}
+          {years.length === 0 && lang !== "en" && (
             <p className="text-zinc-500">
-              {lang === "en" ? "No projects available yet." : "Nenhum projeto disponível."}
+              {dict.blog.emptyProjects}
             </p>
           )}
           {years.map((year) => (
@@ -66,7 +77,7 @@ const Projects = async ({ params }: { params: { lang: Lang } }) => {
               </ul>
             </div>
           ))}
-        </section>
+        </main>
         <Footer />
       </div>
     </div>

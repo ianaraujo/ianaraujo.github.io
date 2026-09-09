@@ -1,31 +1,56 @@
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { getAllProjects, getAllEssays, parseDateString } from "@/lib/posts";
+import { getAllEssays, parseDateString } from "@/lib/posts";
 import { Lang } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+
+export function generateMetadata({ params }: { params: { lang: Lang } }) {
+  const dict = getDictionary(params.lang);
+  return pageMetadata(params.lang, "", dict.meta.title, dict.meta.description);
+}
 
 const Home = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = params;
   const dict = getDictionary(lang);
-  const projects = getAllProjects(lang);
   const essays = getAllEssays(lang);
 
   return (
     <div className="flex justify-center w-full min-h-screen">
-      <div className="mt-6 w-full max-w-screen-md px-8 md:px-0">
+      <div className="mt-6 w-full max-w-screen-md px-6 md:px-8">
         <Header lang={lang} />
-        <div className="space-y-12">
+        <main className="space-y-12">
           {/* Introducing myself */}
-          <div>
+          <section>
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-5">{dict.home.headline}</h1>
             <p className="text-lg leading-relaxed text-zinc-700">
               {dict.home.bio}
             </p>
-          </div>
+            <p className="mt-4 text-base leading-relaxed text-zinc-600">{dict.home.intro}</p>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-base">
+              <Link href={`/${lang}/projects`} className="font-medium underline underline-offset-4">{dict.home.viewProjects}</Link>
+              <a href="#contact" className="underline underline-offset-4 text-zinc-600">{dict.home.talk}</a>
+            </div>
+          </section>
+          <section aria-labelledby="focus">
+            <h2 id="focus" className="text-base font-semibold uppercase tracking-wider text-zinc-500 mb-6">{dict.home.focus}</h2>
+            <div className="grid gap-6 sm:grid-cols-3">
+              {dict.home.areas.map(area => <div key={area.title} className="border-t border-zinc-200 pt-4">
+                <h3 className="font-semibold mb-2">{area.title}</h3>
+                <p className="text-base leading-relaxed text-zinc-600">{area.text}</p>
+              </div>)}
+            </div>
+          </section>
+          <section aria-labelledby="projects">
+            <h2 id="projects" className="text-base font-semibold uppercase tracking-wider text-zinc-500 mb-6">{dict.home.featuredProjects}</h2>
+            <FeaturedProjects lang={lang} />
+          </section>
           {/* Experience */}
           <section>
-            <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-6">{dict.home.experience}</h2>
+            <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-500 mb-6">{dict.home.experience}</h2>
             <div className="relative">
               <div className="absolute left-4 top-0 bottom-0 w-px bg-zinc-200"></div>
               <div className="space-y-8">
@@ -38,7 +63,7 @@ const Home = async ({ params }: { params: { lang: Lang } }) => {
                       <div className="flex items-center gap-3">
                         <h3 className="text-base font-semibold">{job.title}</h3>
                         {i === 0 && (
-                          <p className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 font-semibold">
+                          <p className="text-xs px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 font-semibold">
                             {dict.home.current}
                           </p>
                         )}
@@ -50,27 +75,6 @@ const Home = async ({ params }: { params: { lang: Lang } }) => {
               </div>
             </div>
           </section>
-          {/* Projects */}
-          {projects.length > 0 && (
-            <section>
-              <Link href={`/${lang}/projects`}>
-                <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 hover:text-zinc-600 transition-colors mb-6">{dict.home.latestProjects}</h2>
-              </Link>
-              <ul className="space-y-3">
-                {projects.slice(0, 3).map((post) => (
-                  <li
-                    key={post.slug}
-                    className="w-full border border-zinc-200 rounded-md px-5 py-4 space-y-1 hover:bg-zinc-50 transition-colors"
-                  >
-                    <Link href={`/${lang}/blog/${post.slug}`}>
-                      <h3 className="font-medium hover:underline">{post.title}</h3>
-                    </Link>
-                    <p className="text-zinc-500 text-sm">{post.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
           {/* Essays */}
           {essays.length > 0 && (
             <section>
@@ -93,13 +97,14 @@ const Home = async ({ params }: { params: { lang: Lang } }) => {
               </ul>
             </section>
           )}
-          <section>
-            <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-400 mb-6">{dict.home.contact}</h2>
+          <section id="contact">
+            <h2 className="text-base font-semibold uppercase tracking-wider text-zinc-500 mb-6">{dict.home.contact}</h2>
             <p className="text-zinc-700">
               {dict.home.contactText}
             </p>
+            <a href="https://www.linkedin.com/in/ianvazaraujo/" className="inline-block mt-4 font-medium underline underline-offset-4">{dict.home.contactAction}</a>
           </section>
-        </div>
+        </main>
         <Footer />
       </div>
     </div>
