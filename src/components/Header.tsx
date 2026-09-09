@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Lang } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { getPostSlugs } from "@/lib/posts";
+import { getPostSlugs, getAllPosts } from "@/lib/posts";
 
 const navLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ianvazaraujo/" },
@@ -23,7 +23,10 @@ export function Header({ lang, currentPath = "" }: HeaderProps) {
   const languagePath = (locale: Lang) => {
     if (currentPath.startsWith("/blog/")) {
       const slug = currentPath.slice("/blog/".length);
-      if (!getPostSlugs(locale).includes(slug)) return `/${locale}/projects`;
+      if (!getPostSlugs(locale).includes(slug)) {
+        const post = getAllPosts(lang).find(post => post.slug === slug);
+        return `/${locale}/${post?.type === "essay" ? "blog" : "projects"}`;
+      }
     }
     return `/${locale}${currentPath}`;
   };
@@ -37,6 +40,8 @@ export function Header({ lang, currentPath = "" }: HeaderProps) {
         </div>
         <nav aria-label={dict.nav.label} className="flex flex-wrap items-center gap-4">
           <ul className="flex flex-wrap gap-4 text-sm text-zinc-700">
+            <li><Link href={`/${lang}/projects`} aria-current={currentPath === "/projects" ? "page" : undefined} className="hover:underline">{dict.home.latestProjects}</Link></li>
+            <li><Link href={`/${lang}/blog`} aria-current={currentPath === "/blog" ? "page" : undefined} className="hover:underline">{dict.home.latestEssays}</Link></li>
             {navLinks.map(({ label, href }) => (
               <li key={label}>
                 <a className="group transition duration-300" href={href}>
@@ -75,3 +80,4 @@ export function Header({ lang, currentPath = "" }: HeaderProps) {
     </>
   );
 }
+
