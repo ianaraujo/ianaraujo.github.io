@@ -12,7 +12,7 @@ const dictionaries = {
       headline: "Software, dados e IA para problemas reais.",
       bio: "Sou Ian Vaz Araujo, desenvolvedor e profissional de dados. Meu foco é transformar processos manuais e informações dispersas em ferramentas úteis, análises claras e aplicações de inteligência artificial. Atualmente, trabalho na Turim MFO.",
       intro: "Aqui compartilho projetos e decisões técnicas sobre software, dados e IA, além de textos sobre finanças e tecnologia.",
-      focus: "Áreas de interesse",
+      focus: "Software, dados e aplicações",
       areas: [
         { title: "Software e automação", text: "Ferramentas em Python, integração de sistemas e automação de rotinas para reduzir trabalho manual." },
         { title: "Dados e decisões", text: "Pipelines de dados, análises e modelos de machine learning que conectam informações a perguntas de negócio." },
@@ -55,7 +55,7 @@ const dictionaries = {
       headline: "Software, data and AI for real problems.",
       bio: "I'm Ian Vaz Araujo, a developer and data professional. My focus is turning manual processes and scattered information into useful tools, clear analysis and practical AI applications. I currently work at Turim MFO.",
       intro: "Here I share projects and technical decisions across software, data and AI, alongside writing on finance and technology.",
-      focus: "Areas of interest",
+      focus: "Software, data and applications",
       areas: [
         { title: "Software & automation", text: "Python tools, system integrations and workflow automation to reduce manual work." },
         { title: "Data & decisions", text: "Data pipelines, analysis and machine learning models that connect information to business questions." },
@@ -92,3 +92,4 @@ const dictionaries = {
 export function getDictionary(lang: Lang) {
   return dictionaries[lang];
 }
+
