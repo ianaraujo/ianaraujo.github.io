@@ -62,6 +62,7 @@ const PostPage = async ({ params }: { params: { lang: Lang; slug: string } }) =>
     <div className="flex justify-center w-full min-h-screen">
       <div className="mt-6 w-full max-w-screen-md px-6 md:px-8">
         <Header lang={lang} currentPath={`/blog/${slug}`} />
+        <main>
         <div className="flex flex-col space-y-5 mb-10">
           <p className="w-fit px-2 py-[2px] bg-zinc-200 text-zinc-800 text-sm rounded">
             {post.tag}
@@ -80,6 +81,12 @@ const PostPage = async ({ params }: { params: { lang: Lang; slug: string } }) =>
           className="prose prose-zinc prose-h3:mb-[30px] prose-h3:mt-[40px] marker:text-zinc-400 prose-img:my-10 prose-table:my-10 max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        <section aria-labelledby="discuss" className="mt-12 border-t border-zinc-200 pt-6">
+          <h2 id="discuss" className="text-lg font-semibold mb-3">{dict.home.talk}</h2>
+          <p className="text-zinc-600 leading-relaxed">{dict.home.contactText}</p>
+          <a href="https://www.linkedin.com/in/ianvazaraujo/" className="inline-block mt-4 font-medium underline underline-offset-4">{dict.home.contactAction}</a>
+        </section>
+        </main>
         <Footer />
       </div>
     </div>
@@ -87,3 +94,4 @@ const PostPage = async ({ params }: { params: { lang: Lang; slug: string } }) =>
 };
 
 export default PostPage;
+
